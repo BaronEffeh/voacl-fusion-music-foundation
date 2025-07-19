@@ -34,6 +34,7 @@ const HeroSection = () => {
           color="error"
           component={RouterLink}
           to="/register"
+          sx={{ fontWeight: 'bold', borderRadius: '16px', height: 48 }}
         >
           Register for Choral Challenge
         </Button>

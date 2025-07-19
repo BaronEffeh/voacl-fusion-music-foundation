@@ -17,7 +17,8 @@ const theme = createTheme({
     fontFamily: `'Lato', 'Poppins', 'Roboto', 'Arial', sans-serif`,
     h1: { fontWeight: 700 },
     h2: { fontWeight: 600 },
-    body1: { fontSize: '1rem' },
+    h4: { fontWeight: 900 },
+    body1: { fontSize: '1rem', lineHeight: "30px" },
   },
   components: {
     MuiCssBaseline: {
