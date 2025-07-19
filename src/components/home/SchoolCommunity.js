@@ -1,6 +1,7 @@
 // src/components/SchoolCommunity.js
 import React from 'react';
 import { Box, Typography, Card, CardContent, Button, Avatar } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 import Slider from 'react-slick';
 
 // Sample data – replace with actual image imports or URLs
@@ -26,12 +27,16 @@ const schools = [
     logo: require('../../assets/schools/britarch.png'),
   },
   {
-    name: 'Covenant Academy, Abuja',
-    logo: require('../../assets/schools/britarch.png'),
+    name: 'Government Secondary School Kuje',
+    logo: require('../../assets/schools/gssk.png'),
   },
   {
-    name: 'Greenfield International School',
-    logo: require('../../assets/schools/britarch.png'),
+    name: 'St. Patrick Secondary School, Benue State',
+    logo: require('../../assets/schools/spssb.png'),
+  },
+  {
+    name: 'Regina Pacis College Garki, Abuja',
+    logo: require('../../assets/schools/regina-pacis-college.png'),
   },
 ];
 
@@ -116,7 +121,13 @@ const SchoolCommunity = () => {
         </Slider>
       </Box>
 
-      <Button variant="contained" color="error" size="large">
+      <Button 
+        variant="contained" 
+        color="error" 
+        size="large"
+        component={RouterLink}
+        to="/register"
+      >
         Become a partner
       </Button>
     </Box>

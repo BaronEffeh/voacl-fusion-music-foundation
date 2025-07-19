@@ -50,7 +50,7 @@ const SchoolChoralChallange = () => {
               variant="contained"
               color="error"
               component={RouterLink}
-              to="/about"
+              to="/register"
               sx={{ mt: 2 }}
             >
               Click here to register
