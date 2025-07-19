@@ -1,6 +1,7 @@
 // src/components/SchoolCommunity.js
 import React from 'react';
-import { Box, Typography, Grid, Card, CardContent, Button, Avatar } from '@mui/material';
+import { Box, Typography, Card, CardContent, Button, Avatar } from '@mui/material';
+import Slider from 'react-slick';
 
 // Sample data – replace with actual image imports or URLs
 const schools = [
@@ -24,7 +25,51 @@ const schools = [
     name: 'Britarch Schools, Lugbe, Abuja',
     logo: require('../../assets/schools/britarch.png'),
   },
+  {
+    name: 'Covenant Academy, Abuja',
+    logo: require('../../assets/schools/britarch.png'),
+  },
+  {
+    name: 'Greenfield International School',
+    logo: require('../../assets/schools/britarch.png'),
+  },
 ];
+
+const sliderSettings = {
+  dots: false,
+  infinite: true,
+  speed: 2000,
+  autoplay: true,
+  autoplaySpeed: 2500,
+  slidesToShow: 5,
+  slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 1200,
+      settings: {
+        slidesToShow: 4,
+      },
+    },
+    {
+      breakpoint: 960,
+      settings: {
+        slidesToShow: 3,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+    {
+      breakpoint: 400,
+      settings: {
+        slidesToShow: 1,
+      },
+    },
+  ],
+};
 
 const SchoolCommunity = () => {
   return (
@@ -40,36 +85,36 @@ const SchoolCommunity = () => {
         a movement — one where music is more than performance; it’s transformation.
       </Typography>
 
-      <Grid container spacing={6} justifyContent="center" maxWidth="1152px" mb={5}>
-        {schools.map((school, idx) => (
-          <Grid item key={idx} xs={12} sm={6} md={4} lg={2.4}>
-            <Card
-              elevation={3}
-              sx={{
-                width: '187px',
-                borderRadius: '16px',
-                border: '0.5px',
-                py: 3,
-                px: 2,
-                backgroundColor: '#FEF0F6',
-                textAlign: 'center',
-              }}
-            >
-              <Avatar
-                src={school.logo}
-                alt={school.name}
-                sx={{ width: 80, height: 80, margin: '0 auto', mb: 2 }}
-                variant="circular"
-              />
-              <CardContent sx={{ p: 0 }}>
-                <Typography variant="body2" fontWeight="medium">
-                  {school.name}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
+      <Box maxWidth="1152px" mx="auto" mb={5}>
+        <Slider {...sliderSettings}>
+          {schools.map((school, idx) => (
+            <Box key={idx} px={2}>
+              <Card
+                elevation={3}
+                sx={{
+                  borderRadius: '16px',
+                  py: 3,
+                  px: 2,
+                  backgroundColor: '#FEF0F6',
+                  textAlign: 'center',
+                }}
+              >
+                <Avatar
+                  src={school.logo}
+                  alt={school.name}
+                  sx={{ width: 80, height: 80, margin: '0 auto', mb: 2 }}
+                  variant="circular"
+                />
+                <CardContent sx={{ p: 0 }}>
+                  <Typography variant="body2" fontWeight="medium">
+                    {school.name}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Box>
+          ))}
+        </Slider>
+      </Box>
 
       <Button variant="contained" color="error" size="large">
         Become a partner
