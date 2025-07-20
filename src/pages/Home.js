@@ -6,6 +6,8 @@ import HeroSection from '../components/home/HeroSection';
 import Overview from '../components/home/Overview';
 import SchoolChoralChallange from '../components/home/SchoolChoralChallange';
 import SchoolCommunity from '../components/home/SchoolCommunity';
+import UpcomingEvents from '../components/home/UpcomingEvents';
+import CapturedMoments from '../components/home/CapturedMoments';
 
 const Home = () => (
   <Box>
@@ -14,6 +16,8 @@ const Home = () => (
     <Overview />
     <SchoolChoralChallange />
     <SchoolCommunity />
+    <UpcomingEvents />
+    <CapturedMoments />
 
     {/* <Overview /> */}
     <Typography variant="h4" gutterBottom>Home</Typography>
