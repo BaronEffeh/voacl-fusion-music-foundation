@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Box,
   Typography,
@@ -56,7 +56,7 @@ const CapturedMoments = () => {
     navigate('/gallery');
   };
 
-  // Optional: Arrow key support for desktop
+  // Keyboard support
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (!open) return;
@@ -67,6 +67,27 @@ const CapturedMoments = () => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [open]);
+
+  // Swipe Support
+  const startXRef = useRef(null);
+
+  const handleTouchStart = (e) => {
+    startXRef.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e) => {
+    if (startXRef.current === null) return;
+    const endX = e.changedTouches[0].clientX;
+    const deltaX = endX - startXRef.current;
+
+    if (deltaX > 50) {
+      handlePrev(); // swipe right → previous image
+    } else if (deltaX < -50) {
+      handleNext(); // swipe left → next image
+    }
+
+    startXRef.current = null;
+  };
 
   return (
     <Box sx={{ py: 10, px: { xs: 2, md: 6 }, textAlign: 'center' }}>
@@ -110,8 +131,12 @@ const CapturedMoments = () => {
 
       {/* Lightbox Dialog */}
       <Dialog open={open} onClose={handleClose} maxWidth="md">
-        <DialogContent sx={{ position: 'relative', p: 0, overflow: 'hidden' }}>
-          {/* Close Button */}
+        <DialogContent
+          sx={{ position: 'relative', p: 0, overflow: 'hidden' }}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          {/* Close */}
           <IconButton
             onClick={handleClose}
             sx={{ position: 'absolute', top: 8, right: 8, zIndex: 2, color: 'white' }}
@@ -153,7 +178,7 @@ const CapturedMoments = () => {
             <ArrowForwardIosIcon />
           </IconButton>
 
-          {/* Image */}
+          {/* Lightbox Image */}
           <Box
             component="img"
             src={galleryImages[currentIndex]}
@@ -177,7 +202,7 @@ export default CapturedMoments;
 
 
 
-// import React, { useState } from 'react';
+// import React, { useState, useEffect } from 'react';
 // import {
 //   Box,
 //   Typography,
@@ -188,6 +213,8 @@ export default CapturedMoments;
 //   IconButton,
 // } from '@mui/material';
 // import CloseIcon from '@mui/icons-material/Close';
+// import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+// import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 // import { useNavigate } from 'react-router-dom';
 
 // import Gallery1 from '../../assets/images/gallery1.png';
@@ -209,22 +236,41 @@ export default CapturedMoments;
 
 // const CapturedMoments = () => {
 //   const [open, setOpen] = useState(false);
-//   const [selectedImage, setSelectedImage] = useState(null);
+//   const [currentIndex, setCurrentIndex] = useState(0);
 //   const navigate = useNavigate();
 
-//   const handleImageClick = (img) => {
-//     setSelectedImage(img);
+//   const handleImageClick = (index) => {
+//     setCurrentIndex(index);
 //     setOpen(true);
 //   };
 
 //   const handleClose = () => {
 //     setOpen(false);
-//     setSelectedImage(null);
+//   };
+
+//   const handlePrev = () => {
+//     setCurrentIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
+//   };
+
+//   const handleNext = () => {
+//     setCurrentIndex((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1));
 //   };
 
 //   const handleSeeMore = () => {
 //     navigate('/gallery');
 //   };
+
+//   // Optional: Arrow key support for desktop
+//   useEffect(() => {
+//     const handleKeyDown = (e) => {
+//       if (!open) return;
+//       if (e.key === 'ArrowRight') handleNext();
+//       if (e.key === 'ArrowLeft') handlePrev();
+//       if (e.key === 'Escape') handleClose();
+//     };
+//     window.addEventListener('keydown', handleKeyDown);
+//     return () => window.removeEventListener('keydown', handleKeyDown);
+//   }, [open]);
 
 //   return (
 //     <Box sx={{ py: 10, px: { xs: 2, md: 6 }, textAlign: 'center' }}>
@@ -244,7 +290,7 @@ export default CapturedMoments;
 //               component="img"
 //               src={img}
 //               alt={`gallery-${index}`}
-//               onClick={() => handleImageClick(img)}
+//               onClick={() => handleImageClick(index)}
 //               sx={{
 //                 width: '352px',
 //                 height: '230px',
@@ -266,19 +312,56 @@ export default CapturedMoments;
 //         See More
 //       </Button>
 
-//       {/* Lightbox Preview */}
+//       {/* Lightbox Dialog */}
 //       <Dialog open={open} onClose={handleClose} maxWidth="md">
-//         <DialogContent sx={{ position: 'relative', p: 0 }}>
+//         <DialogContent sx={{ position: 'relative', p: 0, overflow: 'hidden' }}>
+//           {/* Close Button */}
 //           <IconButton
 //             onClick={handleClose}
-//             sx={{ position: 'absolute', top: 8, right: 8, zIndex: 1, color: 'white' }}
+//             sx={{ position: 'absolute', top: 8, right: 8, zIndex: 2, color: 'white' }}
 //           >
 //             <CloseIcon />
 //           </IconButton>
+
+//           {/* Left Arrow */}
+//           <IconButton
+//             onClick={handlePrev}
+//             sx={{
+//               position: 'absolute',
+//               top: '50%',
+//               left: 10,
+//               zIndex: 2,
+//               color: 'white',
+//               transform: 'translateY(-50%)',
+//               backgroundColor: 'rgba(0,0,0,0.5)',
+//               '&:hover': { backgroundColor: 'rgba(0,0,0,0.7)' },
+//             }}
+//           >
+//             <ArrowBackIosNewIcon />
+//           </IconButton>
+
+//           {/* Right Arrow */}
+//           <IconButton
+//             onClick={handleNext}
+//             sx={{
+//               position: 'absolute',
+//               top: '50%',
+//               right: 10,
+//               zIndex: 2,
+//               color: 'white',
+//               transform: 'translateY(-50%)',
+//               backgroundColor: 'rgba(0,0,0,0.5)',
+//               '&:hover': { backgroundColor: 'rgba(0,0,0,0.7)' },
+//             }}
+//           >
+//             <ArrowForwardIosIcon />
+//           </IconButton>
+
+//           {/* Image */}
 //           <Box
 //             component="img"
-//             src={selectedImage}
-//             alt="preview"
+//             src={galleryImages[currentIndex]}
+//             alt={`preview-${currentIndex}`}
 //             sx={{
 //               width: '100%',
 //               height: 'auto',

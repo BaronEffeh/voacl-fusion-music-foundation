@@ -13,6 +13,7 @@ import Events from './pages/Events';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 import Register from './pages/Register';
+import Footer from './components/global/Footer';
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/register" element={<Register />} />
       </Routes>
+      <Footer />
     </Router>
   );
 };
