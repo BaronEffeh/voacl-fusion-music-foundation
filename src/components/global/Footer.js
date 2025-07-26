@@ -10,7 +10,15 @@ import {
 } from '@mui/icons-material';
 
 const Footer = () => {
-  const iconStyle = { color: '#72254b', fontSize: 32 };
+  const iconHoverStyle = {
+    color: '#67355E',
+    fontSize: 32,
+    transition: 'transform 0.3s ease, color 0.3s ease',
+    '&:hover': {
+      transform: 'scale(1.3)',
+      color: '#BA1A1A',
+    },
+  };
 
   return (
     <Box sx={{ backgroundColor: '#fef6f8', textAlign: 'center', pt: 6 }}>
@@ -20,22 +28,22 @@ const Footer = () => {
 
       <Stack direction="row" justifyContent="center" spacing={3} mb={6}>
         <IconButton aria-label="Twitter" href="https://twitter.com" target="_blank">
-          <Twitter sx={iconStyle} />
+          <Twitter sx={iconHoverStyle} />
         </IconButton>
         <IconButton aria-label="Facebook" href="https://facebook.com" target="_blank">
-          <Facebook sx={iconStyle} />
+          <Facebook sx={iconHoverStyle} />
         </IconButton>
         <IconButton aria-label="Instagram" href="https://instagram.com" target="_blank">
-          <Instagram sx={iconStyle} />
+          <Instagram sx={iconHoverStyle} />
         </IconButton>
-        <IconButton aria-label="Call" href="tel:+234123456789">
-          <Phone sx={iconStyle} />
+        <IconButton aria-label="Call" href="tel:+2347012928822">
+          <Phone sx={iconHoverStyle} />
         </IconButton>
         <IconButton aria-label="Email" href="mailto:info@vocalfusion.org">
-          <Email sx={iconStyle} />
+          <Email sx={iconHoverStyle} />
         </IconButton>
         <IconButton aria-label="YouTube" href="https://youtube.com" target="_blank">
-          <YouTube sx={iconStyle} />
+          <YouTube sx={iconHoverStyle} />
         </IconButton>
       </Stack>
 
