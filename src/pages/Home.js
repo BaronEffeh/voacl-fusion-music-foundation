@@ -1,6 +1,6 @@
 // Example: src/pages/Home.js
 import React from 'react';
-import { Box, } from '@mui/material';
+import { Box, Divider } from '@mui/material';
 import HeroSection from '../components/home/HeroSection';
 import Overview from '../components/home/Overview';
 import SchoolChoralChallange from '../components/home/SchoolChoralChallange';
@@ -14,17 +14,17 @@ const Home = () => (
     <HeroSection />
     {console.log('Overview:', Overview)}
     <Overview />
-    <hr style={{border: '0.1px solid #62400029'}}/>
+    <Divider />
     <SchoolChoralChallange />
-    <hr style={{border: '0.1px solid #62400029'}}/>
+    <Divider />
     <SchoolCommunity />
-    <hr style={{border: '0.1px solid #62400029'}}/>
+    <Divider />
     <UpcomingEvents />
-    <hr style={{border: '0.1px solid #62400029'}}/>
+    <Divider />
     <CapturedMoments />
-    <hr style={{border: '0.1px solid #62400029'}}/>
+    <Divider />
     <TestimonialCarousel />
-    <hr style={{border: '0.1px solid #62400029'}}/>
+    <Divider />
   </Box>
 );
 

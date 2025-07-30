@@ -36,7 +36,7 @@ const SchoolChoralChallange = () => {
 
         {/* Text Section */}
         <Grid item xs={12} md={6} sx={{width: "466px"}}>
-          <Box sx={{ pr: { md: 4 } }}>
+          <Box sx={{ pr: { md: 1 } }}>
             <Typography variant="h4" fontWeight="bold" gutterBottom>
               Schools’ Choral Challenge
             </Typography>

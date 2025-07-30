@@ -34,7 +34,7 @@ const TheJourneySoFar = () => {
             alt="Vocal Fusion Team"
             sx={{
               width: '1152px',
-              maxHeight: 400,
+              maxHeight: '450px',
               objectFit: 'cover',
               boxShadow: 3,
             }}

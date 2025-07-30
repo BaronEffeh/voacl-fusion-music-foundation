@@ -7,10 +7,10 @@ const theme = createTheme({
       default: '#FFF7F9', // Set global background color
     },
     primary: {
-      main: '#6200ea', // Example color (purple)
+      main: '#6200ea',
     },
     secondary: {
-      main: '#ff5252', // Accent color (red)
+      main: '#ff5252',
     },
   },
   typography: {

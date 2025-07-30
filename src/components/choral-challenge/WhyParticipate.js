@@ -1,9 +1,8 @@
 import React from 'react';
-import { Box, Typography, Button, Grid } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
+import { Box, Typography, Grid } from '@mui/material';
 import WhoWeAre from '../../assets/who-we-are.png';
 
-const Overview = () => {
+const WhyParticipate = () => {
   return (
     <Box
       sx={{
@@ -20,32 +19,26 @@ const Overview = () => {
         direction={{ xs: 'column', md: 'row' }}
       >
         {/* Text Section */}
-        <Grid item xs={12} md={6} sx={{width: "466px"}}>
+        <Grid item xs={12} md={6} sx={{width: "566px"}}>
           <Box sx={{ pr: { md: 1 } }}>
             <Typography variant="h4" fontWeight="bold" gutterBottom>
-              Who we are
+              Why Participate?
             </Typography>
             <Typography variant="body1" paragraph>
-              Vocal Fusion Music Foundation is a music-based non-governmental organization (NGO)
-              dedicated to harnessing the transformative power of music to inspire, educate, and
-              empower individuals and communities. Through innovative music programs, workshops, and
-              performances, we strive to foster creativity, promote cultural exchange, and build
-              bridges between diverse communities.
+              Every year, schools from across Nigeria converge for the Choral Challenge — Vocal Fusion’s 
+              flagship musical competition that does more than crown winners. It inspires transformation. 
+              This thrilling event empowers students by building confidence and refining their public 
+              performance skills. It promotes music education by strengthening each school’s creative 
+              culture, and fosters connection as choirs share the stage with peers from across the 
+              nation. More than just a competition, the Choral Challenge is a platform for recognition, 
+              celebration, and growth — with awards, trophies, and concert opportunities awaiting the 
+              most outstanding performances.
             </Typography>
-            <Button
-              variant="contained"
-              color="error"
-              component={RouterLink}
-              to="/about"
-              sx={{ mt: 2 }}
-            >
-              Read More
-            </Button>
           </Box>
         </Grid>
 
         {/* Image Section */}
-        <Grid item xs={12} md={6} sx={{width: "666px"}}>
+        <Grid item xs={12} md={6} sx={{width: "566px"}}>
           <Box
             component="img"
             src={WhoWeAre}
@@ -64,4 +57,4 @@ const Overview = () => {
   );
 };
 
-export default Overview;
+export default WhyParticipate;

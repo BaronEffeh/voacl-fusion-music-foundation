@@ -8,6 +8,7 @@ import {
   Email,
   YouTube,
 } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const iconHoverStyle = {
@@ -49,7 +50,13 @@ const Footer = () => {
 
       <Box sx={{ backgroundColor: '#BA1A1A', py: 2 }}>
         <Typography variant="body2" color="white">
-          &copy; Copyright 2025. Vocal Fusion Music Foundation
+          &copy; Copyright 2025. Vocal Fusion Music Foundation | Powered by   
+          <Link 
+            to="https://baroneffeh.github.io/baron_effeh_portfolio/" 
+            target="_blank"
+            >
+              : BaronEffeh
+            </Link>
         </Typography>
       </Box>
     </Box>
