@@ -8,6 +8,7 @@ import SchoolCommunity from '../components/home/SchoolCommunity';
 import UpcomingEvents from '../components/home/UpcomingEvents';
 import CapturedMoments from '../components/home/CapturedMoments';
 import TestimonialCarousel from '../components/home/TestimonialCarousel';
+import FoundersWord from '../components/home/FoundersWord';
 
 const Home = () => (
   <Box>
@@ -22,6 +23,8 @@ const Home = () => (
     <UpcomingEvents />
     <Divider />
     <CapturedMoments />
+    <Divider />
+    <FoundersWord />
     <Divider />
     <TestimonialCarousel />
     <Divider />

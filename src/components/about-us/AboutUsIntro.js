@@ -8,14 +8,15 @@ const AboutUsIntro = () => {
     <Box
       sx={{
         height: '712px',
-        backgroundImage: `url(/about-us-img.png)`,
+        backgroundImage: `url(/about-intro-bg.jpg)`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         color: '#fff',
         display: 'flex',
         alignItems: 'center',
         px: 4,
-        paddingLeft: "65px"
+        paddingLeft: "65px",
+        filter: 'brightness(0.4)'
       }}
     >
       <Box maxWidth="761px" sx={{mt: 20}}>

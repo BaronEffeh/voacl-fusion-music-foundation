@@ -13,21 +13,26 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useNavigate } from 'react-router-dom';
 
-import Gallery1 from '../../assets/images/gallery1.png';
-import Gallery2 from '../../assets/images/gallery2.jpg';
-import Gallery3 from '../../assets/images/gallery3.png';
-import Gallery4 from '../../assets/images/gallery4.jpg';
+import CapturedMoments1 from '../../assets/images/captured-moments1.jpg';
+import CapturedMoments2 from '../../assets/images/captured-moments2.jpg';
+import CapturedMoments3 from '../../assets/images/captured-moments3.jpg';
+import CapturedMoments4 from '../../assets/images/captured-moments4.jpg';
+import CapturedMoments5 from '../../assets/images/captured-moments5.jpg';
+import CapturedMoments6 from '../../assets/images/captured-moments6.jpg';
+import CapturedMoments7 from '../../assets/images/captured-moments7.jpg';
+import CapturedMoments8 from '../../assets/images/captured-moments8.jpg';
+import CapturedMoments9 from '../../assets/images/captured-moments9.jpg';
 
 const galleryImages = [
-  Gallery1,
-  Gallery2,
-  Gallery3,
-  Gallery4,
-  Gallery3,
-  Gallery1,
-  Gallery2,
-  Gallery4,
-  Gallery3,
+  CapturedMoments1,
+  CapturedMoments2,
+  CapturedMoments3,
+  CapturedMoments4,
+  CapturedMoments5,
+  CapturedMoments6,
+  CapturedMoments7,
+  CapturedMoments8,
+  CapturedMoments9,
 ];
 
 const CapturedMoments = () => {

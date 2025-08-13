@@ -1,7 +1,8 @@
 import React from 'react';
 import { Box, Typography, Button, Grid } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
-import WhoWeAre from '../../assets/who-we-are.png';
+// import WhoWeAre from '../../assets/who-we-are.png';
+import WhoWeAre from '../../assets/dual-logo.png';
 
 const Overview = () => {
   return (
@@ -55,7 +56,7 @@ const Overview = () => {
               maxHeight: 400,
               objectFit: 'cover',
               borderRadius: 2,
-              boxShadow: 3,
+              // boxShadow: 3,
             }}
           />
         </Grid>

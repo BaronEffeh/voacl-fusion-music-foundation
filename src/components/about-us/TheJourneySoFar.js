@@ -18,6 +18,7 @@ const TheJourneySoFar = () => {
         and strengthen music education in schools — especially through choir participation. 
         What began as a small grassroots effort has grown into a national movement that continues 
         to reach students across Nigeria through vibrant competitions, workshops, and music camps.
+        <Typography>
         Over the years, we have expanded our impact by organizing hands-on music workshops, classes, 
         and live performances that develop talent and creativity. We also engage in community outreach 
         programs that use music as a tool for inclusion and social development. Through strategic 
@@ -25,6 +26,7 @@ const TheJourneySoFar = () => {
         champions music as a vital part of education and society. Every stage, every song, every 
         standing ovation — it all reflects our commitment to giving young voices a platform to 
         rise and be heard.
+        </Typography>
       </Typography>
 
       {/* Image section */}
