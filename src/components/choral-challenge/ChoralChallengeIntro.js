@@ -8,7 +8,7 @@ const ChoralChallangeIntro = () => {
     <Box
       sx={{
         height: '712px',
-        backgroundImage: `url(/choral-challenge-intro-img.png)`,
+        backgroundImage: `url(/choral-challenge-intro.jpg)`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         color: '#fff',

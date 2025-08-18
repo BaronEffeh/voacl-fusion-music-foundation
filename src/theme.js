@@ -15,9 +15,9 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: `'Lato', 'Poppins', 'Roboto', 'Arial', sans-serif`,
-    h1: { fontWeight: 700 },
+    h1: { fontWeight: 800 },
     h2: { fontWeight: 600 },
-    h4: { fontWeight: 900 },
+    h4: { fontWeight: 400 },
     body1: { fontSize: '1rem', lineHeight: "30px" },
   },
   components: {

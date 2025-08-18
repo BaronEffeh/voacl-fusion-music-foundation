@@ -1,7 +1,7 @@
 // src/components/TheJourneySoFar.js
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-import AboutImage from '../../assets/other_images/about-us-img.png';
+import AboutImage from '../../assets/other_images/journey-so-far.png';
 
 const TheJourneySoFar = () => {
   return (

@@ -43,8 +43,8 @@ const Navbar = () => {
                 to={path}
                 sx={{
                   color: isActive(path) ? '#BA1A1A' : '#000',
-                  fontWeight: 'bold',
-                  textTransform: 'none',
+                  // fontWeight: 'bold',
+                  textTransform: 'uppercase',
                 }}
               >
                 {text}
@@ -59,7 +59,7 @@ const Navbar = () => {
           component={RouterLink}
           to="/register"
           sx={{
-            fontWeight: 'bold',
+            // fontWeight: 'bold',
             background: '#FFFFFF',
             borderRadius: '16px',
             height: 48,

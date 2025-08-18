@@ -6,7 +6,16 @@ const YearWinnerReview = () => {
   return (
     <Box sx={{ py: 10, px: { xs: 2, md: 6 }, textAlign: 'center', background: '#FFEEDC' }}>
       
-      <Typography variant="body1" maxWidth="1152px" mx="auto" mb={5} sx={{ textAlign: 'center' }}>
+      <Typography 
+        variant="body1" 
+        maxWidth="1152px" 
+        mx="auto" 
+        mb={5} 
+        sx={{ 
+          textAlign: 'center', 
+          fontStyle: 'italic' 
+          }}
+        >
         "Winning the 2025 Choral Challenge was a dream come true for us at St Patrick’s Secondary School, 
         Ikpayongo, Benue State. The journey from Day 1 to the final stage was filled with intense 
         rehearsals, new friendships, and unforgettable moments. Performing in front of such an amazing 
@@ -19,7 +28,7 @@ const YearWinnerReview = () => {
         yes, we’ll definitely be back next year to defend our title!"
       </Typography>
 
-      <Typography variant="body1" fontWeight="bold" gutterBottom>
+      <Typography variant="h5" gutterBottom>
         Daniel Obagwu - St Patrick’s Secondary School, Ikpayngo, Benue State <br />
         (Winner, School’s Choral Challenge 2025)
       </Typography>

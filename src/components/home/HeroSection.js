@@ -89,7 +89,7 @@ const HeroSection = () => {
           }}
         >
           <Box maxWidth="761px" sx={{ mt: 20 }}>
-            <Typography variant="h4" fontWeight="bold" gutterBottom>
+            <Typography variant="h4" gutterBottom>
               {slides[currentSlide].title}
             </Typography>
             <Typography variant="body1" paragraph>
