@@ -1,21 +1,10 @@
-// // Example: src/pages/Gallery.js
-// import React from 'react';
-// import { Box, Typography } from '@mui/material';
-
-// const Gallery = () => (
-//   <Box p={4}>
-//     <Typography variant="h4" gutterBottom>Gallery Page</Typography>
-//     <Typography>Content coming soon...</Typography>
-//   </Box>
-// );
-
-// export default Gallery;
-
-
-
 import React from "react";
 import PageBanner from "../components/common/PageBanner";
-import { Box, Typography } from "@mui/material";
+import { Box, Divider } from "@mui/material";
+import CoralChallenge2025 from "../components/gallery/CoralChallenge2025";
+import CoralChallenge2023 from "../components/gallery/CoralChallenge2023";
+import VideoSection from "../components/gallery/VideoSection";
+import SeeYourSchoolFeature from "../components/gallery/SeeYourSchoolFeature";
 
 const Gallery = () => {
   return (
@@ -27,10 +16,19 @@ const Gallery = () => {
         and joy of the Vocal Fusion experience."
         backgroundImage="/gallery-banner.jpg"
       />
-      <Box sx={{ p: 4 }}>
-        <Typography variant="body1">
-          Gallery images coming soon...
-        </Typography>
+      <Box sx={{ p: 2 }}>
+        <CoralChallenge2025 />
+        <Divider />
+
+        <CoralChallenge2023 />
+        <Divider />
+
+        <VideoSection />
+        <Divider />
+
+        <SeeYourSchoolFeature />
+        <Divider />
+        
       </Box>
     </Box>
   );

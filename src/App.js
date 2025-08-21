@@ -14,11 +14,13 @@ import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 import Register from './pages/Register';
 import Footer from './components/global/Footer';
+// import SeeYourSchoolFeature from './components/gallery/SeeYourSchoolFeature';
 
 const App = () => {
   return (
     <Router>
       <Navbar />
+      {/* <SeeYourSchoolFeature /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         {/* <Route path="/home" element={<Home />} /> */}
