@@ -1,21 +1,8 @@
-// // Example: src/pages/Contact.js
-// import React from 'react';
-// import { Box, Typography } from '@mui/material';
-
-// const Contact = () => (
-//   <Box p={4}>
-//     <Typography variant="h4" gutterBottom>Contact Page</Typography>
-//     <Typography>Content coming soon...</Typography>
-//   </Box>
-// );
-
-// export default Contact;
-
-
-
 import React from "react";
 import PageBanner from "../components/common/PageBanner";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
+import ContactForm from "../components/contactUs/ContactForm";
+import ContactDirect from "../components/contactUs/ContactDirect";
 
 const Contact = () => {
   return (
@@ -27,10 +14,11 @@ const Contact = () => {
         Reach out and let’s connect through the power of music."
         backgroundImage="/contact-banner.jpg"
       />
-      <Box sx={{ p: 4 }}>
-        <Typography variant="body1">
-          Contact details coming soon...
-        </Typography>
+      <Box>
+        <ContactForm />
+
+        <ContactDirect />
+
       </Box>
     </Box>
   );
