@@ -1,21 +1,7 @@
-// // Example: src/pages/Register.js
-// import React from 'react';
-// import { Box, Typography } from '@mui/material';
-
-// const Register = () => (
-//   <Box p={4}>
-//     <Typography variant="h4" gutterBottom>Registeration Page</Typography>
-//     <Typography>Content coming soon...</Typography>
-//   </Box>
-// );
-
-// export default Register;
-
-
-
 import React from "react";
 import PageBanner from "../components/common/PageBanner";
 import { Box, Typography } from "@mui/material";
+import RegistrationForm from "../components/register/RegistrationForm";
 
 const Register = () => {
   return (
@@ -28,6 +14,7 @@ const Register = () => {
         backgroundImage="/register-banner.jpg"
       />
       <Box sx={{ p: 4 }}>
+        <RegistrationForm />
         <Typography variant="body1">
           Registration page content comming up soon...
         </Typography>
