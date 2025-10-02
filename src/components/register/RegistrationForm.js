@@ -97,7 +97,7 @@ const MultiStepForm = () => {
   };
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh" bgcolor="#fff5f6">
+    <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh" mb={6}>
       <Card sx={{ maxWidth: 600, width: "100%", p: 3, borderRadius: 3 }}>
         <CardContent>
           {/* Stepper Progress Bar */}

@@ -1,7 +1,8 @@
 import React from "react";
 import PageBanner from "../components/common/PageBanner";
-import { Box, Typography } from "@mui/material";
+import { Box, Divider } from "@mui/material";
 import RegistrationForm from "../components/register/RegistrationForm";
+import EventCTASection from "../components/register/EventCTASection";
 
 const Register = () => {
   return (
@@ -13,11 +14,12 @@ const Register = () => {
         and event preparation."
         backgroundImage="/register-banner.jpg"
       />
-      <Box sx={{ p: 4 }}>
+      <Box>
         <RegistrationForm />
-        <Typography variant="body1">
-          Registration page content comming up soon...
-        </Typography>
+        <Divider />
+
+        <EventCTASection />
+        <Divider />
       </Box>
     </Box>
   );
