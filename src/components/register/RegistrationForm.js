@@ -91,7 +91,7 @@ const MultiStepForm = () => {
 
   const handleConfirm = () => {
     setConfirmOpen(false);
-    console.log("Form submitted:", formData);
+    console.log("Registration Form:", formData);
     console.log("Uploaded File:", file);
     setSuccessOpen(true);
   };
