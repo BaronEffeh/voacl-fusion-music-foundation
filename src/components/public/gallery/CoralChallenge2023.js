@@ -11,18 +11,18 @@ import CloseIcon from '@mui/icons-material/Close';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-import GalleryImage1 from '../../assets/images/captured-moments1.jpg';
-import GalleryImage2 from '../../assets/images/captured-moments2.jpg';
-import GalleryImage3 from '../../assets/images/captured-moments3.jpg';
-import GalleryImage4 from '../../assets/images/captured-moments4.jpg';
-import GalleryImage5 from '../../assets/images/captured-moments5.jpg';
-import GalleryImage6 from '../../assets/images/captured-moments6.jpg';
-import GalleryImage7 from '../../assets/images/captured-moments7.jpg';
-import GalleryImage8 from '../../assets/images/captured-moments8.jpg';
-import GalleryImage9 from '../../assets/images/captured-moments9.jpg';
-import GalleryImage10 from '../../assets/images/captured-moments10.jpg';
-import GalleryImage11 from '../../assets/images/captured-moments11.jpg';
-import GalleryImage12 from '../../assets/images/captured-moments12.jpg';
+import GalleryImage1 from '../../../assets/images/captured-moments1.jpg';
+import GalleryImage2 from '../../../assets/images/captured-moments2.jpg';
+import GalleryImage3 from '../../../assets/images/captured-moments3.jpg';
+import GalleryImage4 from '../../../assets/images/captured-moments4.jpg';
+import GalleryImage5 from '../../../assets/images/captured-moments5.jpg';
+import GalleryImage6 from '../../../assets/images/captured-moments6.jpg';
+import GalleryImage7 from '../../../assets/images/captured-moments7.jpg';
+import GalleryImage8 from '../../../assets/images/captured-moments8.jpg';
+import GalleryImage9 from '../../../assets/images/captured-moments9.jpg';
+import GalleryImage10 from '../../../assets/images/captured-moments10.jpg';
+import GalleryImage11 from '../../../assets/images/captured-moments11.jpg';
+import GalleryImage12 from '../../../assets/images/captured-moments12.jpg';
 
 const galleryImages = [
   GalleryImage1,

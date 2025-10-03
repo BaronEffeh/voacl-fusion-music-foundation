@@ -2,7 +2,7 @@
 import React from 'react';
 import { AppBar, Toolbar, Button, Stack } from '@mui/material';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
-import Logo from '../../assets/logo.png';
+import Logo from '../../../assets/logo.png';
 
 const Navbar = () => {
   const location = useLocation();

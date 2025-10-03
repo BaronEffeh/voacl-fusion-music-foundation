@@ -1,10 +1,10 @@
 import React from "react";
-import PageBanner from "../components/common/PageBanner";
+import PageBanner from "../../components/public/common/PageBanner";
 import { Box, Divider } from "@mui/material";
-import CoralChallenge2025 from "../components/gallery/CoralChallenge2025";
-import CoralChallenge2023 from "../components/gallery/CoralChallenge2023";
-import VideoSection from "../components/gallery/VideoSection";
-import SeeYourSchoolFeature from "../components/gallery/SeeYourSchoolFeature";
+import CoralChallenge2025 from "../../components/public/gallery/CoralChallenge2025";
+import CoralChallenge2023 from "../../components/public/gallery/CoralChallenge2023";
+import VideoSection from "../../components/public/gallery/VideoSection";
+import SeeYourSchoolFeature from "../../components/public/gallery/SeeYourSchoolFeature";
 
 const Gallery = () => {
   return (

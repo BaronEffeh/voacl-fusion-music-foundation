@@ -1,10 +1,10 @@
 import React from 'react';
 import { Box, Typography, Grid, Avatar } from '@mui/material';
-import Ezekwuaku from '../../assets/team_images/chinyere-eze.png';
-import Ejiga from '../../assets/team_images/ejiga-anthony.jpg';
-import Okeleke from '../../assets/team_images/okeleke-amaka.jpg';
-import Iyomo from '../../assets/team_images/iyomo-irewole.png';
-import Chidinma from '../../assets/team_images/chidinma-cynthia.png';
+import Ezekwuaku from '../../../assets/team_images/chinyere-eze.png';
+import Ejiga from '../../../assets/team_images/ejiga-anthony.jpg';
+import Okeleke from '../../../assets/team_images/okeleke-amaka.jpg';
+import Iyomo from '../../../assets/team_images/iyomo-irewole.png';
+import Chidinma from '../../../assets/team_images/chidinma-cynthia.png';
 
 const team = [
   {

@@ -1,8 +1,8 @@
 import React from "react";
-import PageBanner from "../components/common/PageBanner";
+import PageBanner from "../../components/public/common/PageBanner";
 import { Box } from "@mui/material";
-import ContactForm from "../components/contactUs/ContactForm";
-import ContactDirect from "../components/contactUs/ContactDirect";
+import ContactForm from "../../components/public/contactUs/ContactForm";
+import ContactDirect from "../../components/public/contactUs/ContactDirect";
 
 const Contact = () => {
   return (

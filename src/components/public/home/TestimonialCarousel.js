@@ -1,12 +1,12 @@
 import React from 'react';
 import { Box, Typography, Avatar, Card, CardContent } from '@mui/material';
 import Slider from 'react-slick';
-import person1 from '../../assets/images/adeleke-dennis.jpg';
-import person2 from '../../assets/images/mrs-adeyemi.jpg';
-import person3 from '../../assets/images/adeleke.jpg';
-import person4 from '../../assets/images/olawuyi-ndubuisi.jpg';
-import person5 from '../../assets/images/kingsley-amako.jpg';
-import person6 from '../../assets/images/haruna-aisha.jpg';
+import person1 from '../../../assets/images/adeleke-dennis.jpg';
+import person2 from '../../../assets/images/mrs-adeyemi.jpg';
+import person3 from '../../../assets/images/adeleke.jpg';
+import person4 from '../../../assets/images/olawuyi-ndubuisi.jpg';
+import person5 from '../../../assets/images/kingsley-amako.jpg';
+import person6 from '../../../assets/images/haruna-aisha.jpg';
 
 const testimonials = [
   {

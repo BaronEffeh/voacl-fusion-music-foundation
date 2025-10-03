@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Typography, Button, Grid } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 // import WhoWeAre from '../../assets/who-we-are.png';
-import WhoWeAre from '../../assets/dual-logo.png';
+import WhoWeAre from '../../../assets/dual-logo.png';
 
 const Overview = () => {
   return (

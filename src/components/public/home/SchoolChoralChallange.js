@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography, Button, Grid } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
-import SccImage from '../../assets/school-choral-challenge.jpg';
+import SccImage from '../../../assets/school-choral-challenge.jpg';
 
 const SchoolChoralChallange = () => {
   return (

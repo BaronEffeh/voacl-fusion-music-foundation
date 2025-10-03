@@ -8,35 +8,35 @@ import Slider from 'react-slick';
 const schools = [
   {
     name: "Louisville Girls' Secondary School",
-    logo: require('../../assets/schools/louisville.png'),
+    logo: require('../../../assets/schools/louisville.png'),
   },
   {
     name: 'SS Simon and Jude Seminary, Kuje',
-    logo: require('../../assets/schools/simon-jude.png'),
+    logo: require('../../../assets/schools/simon-jude.png'),
   },
   {
     name: "Handmaid Girls' Secondary School",
-    logo: require('../../assets/schools/handmaid.png'),
+    logo: require('../../../assets/schools/handmaid.png'),
   },
   {
     name: 'Holy Family College, Kuje, Abuja',
-    logo: require('../../assets/schools/holy-family.png'),
+    logo: require('../../../assets/schools/holy-family.png'),
   },
   {
     name: 'Britarch Schools, Lugbe, Abuja',
-    logo: require('../../assets/schools/britarch.png'),
+    logo: require('../../../assets/schools/britarch.png'),
   },
   {
     name: 'Government Secondary School Kuje',
-    logo: require('../../assets/schools/gssk.png'),
+    logo: require('../../../assets/schools/gssk.png'),
   },
   {
     name: 'St. Patrick Secondary School, Benue State',
-    logo: require('../../assets/schools/spssb.png'),
+    logo: require('../../../assets/schools/spssb.png'),
   },
   {
     name: 'Regina Pacis College Garki, Abuja',
-    logo: require('../../assets/schools/regina-pacis-college.png'),
+    logo: require('../../../assets/schools/regina-pacis-college.png'),
   },
 ];
 

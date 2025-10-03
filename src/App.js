@@ -4,17 +4,17 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import Navbar from './components/global/Navbar';
+import Navbar from './components/public/global/Navbar';
 
-import Home from './pages/Home';
-import About from './pages/About';
-import ChoralChallenge from './pages/ChoralChallenge';
-import Events from './pages/Events';
-import Gallery from './pages/Gallery';
-import Contact from './pages/Contact';
-import Register from './pages/Register';
-import Footer from './components/global/Footer';
-import ScrollToTop from './components/ScrollToTop';
+import Home from './pages/public/Home';
+import About from './pages/public/About';
+import ChoralChallenge from './pages/public/ChoralChallenge';
+import Events from './pages/public/Events';
+import Gallery from './pages/public/Gallery';
+import Contact from './pages/public/Contact';
+import Register from './pages/public/Register';
+import Footer from './components/public/global/Footer';
+import ScrollToTop from './components/public/ScrollToTop';
 // import SeeYourSchoolFeature from './components/gallery/SeeYourSchoolFeature';
 
 const App = () => {

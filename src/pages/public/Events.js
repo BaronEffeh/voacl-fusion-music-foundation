@@ -1,9 +1,9 @@
 import React from "react";
-import PageBanner from "../components/common/PageBanner";
+import PageBanner from "../../components/public/common/PageBanner";
 import { Box, Divider, Container } from "@mui/material";
-import SignaturePrograms from "../components/events/SignaturePrograms";
-import EventDetail from "../components/events/EventDetail";
-import Expandtion from "../components/events/Expandtion";
+import SignaturePrograms from "../../components/public/events/SignaturePrograms";
+import EventDetail from "../../components/public/events/EventDetail";
+import Expandtion from "../../components/public/events/Expandtion";
 
 const events = [
   {

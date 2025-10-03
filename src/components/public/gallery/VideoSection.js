@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography, Grid, Button } from '@mui/material';
-import WhoWeAre from '../../assets/who-we-are.png';
+import WhoWeAre from '../../../assets/who-we-are.png';
 import { useNavigate } from 'react-router-dom';
 
 const VideoSection = () => {

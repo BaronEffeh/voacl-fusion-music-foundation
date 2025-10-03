@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography, Grid } from '@mui/material';
-import WhoWeAre from '../../assets/why-participate-img.jpg';
+import WhoWeAre from '../../../assets/why-participate-img.jpg';
 // import WhoWeAre from '../../assets/who-we-are.png';
 
 const WhyParticipate = () => {
