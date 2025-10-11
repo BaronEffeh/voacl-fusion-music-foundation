@@ -12,7 +12,7 @@ const SummaryOverview = () => {
   ];
 
   return (
-    <Box sx={{bgcolor: "#fff", padding: "16px", borderRadius: "16px"}}>
+    <Box sx={{bgcolor: "#fff", padding: "16px", paddingBottom: "1px", borderRadius: "16px"}}>
       <Typography variant="h6" fontWeight="bold" gutterBottom>
         Admin Panel
       </Typography>
@@ -31,7 +31,7 @@ const SummaryOverview = () => {
                 bgcolor: "#fff",
                 border: "1px solid #FFB4AB",
                 width: "216px",
-                height: "144"
+                height: "144px"
               }}
             >
               <Box>{item.icon}</Box>

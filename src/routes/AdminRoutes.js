@@ -3,12 +3,16 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import AdminLayout from "../layouts/AdminLayout";
 import Dashboard from "../pages/admin/Dashboard";
+import SchoolRegistration from "../components/admin/schoolRegistration/SchoolRegistration";
+import EventsPage from "../pages/admin/EventsPage";
 
 const AdminRoutes = () => {
   return (
     <Routes>
       <Route element={<AdminLayout />}>
         <Route path="/" element={<Dashboard />} />
+        <Route path="school-registration" element={<SchoolRegistration />} />
+        <Route path="events" element={<EventsPage />} />
         {/* Future routes go here */}
         {/* <Route path="events" element={<Events />} /> */}
         {/* <Route path="gallery" element={<Gallery />} /> */}
