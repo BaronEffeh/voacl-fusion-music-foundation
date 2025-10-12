@@ -5,6 +5,8 @@ import AdminLayout from "../layouts/AdminLayout";
 import Dashboard from "../pages/admin/Dashboard";
 import SchoolRegistration from "../components/admin/schoolRegistration/SchoolRegistration";
 import EventsPage from "../pages/admin/EventsPage";
+import Gallery from "../pages/admin/Gallery";
+import MessagesPage from "../pages/admin/MessagesPage";
 
 const AdminRoutes = () => {
   return (
@@ -13,9 +15,10 @@ const AdminRoutes = () => {
         <Route path="/" element={<Dashboard />} />
         <Route path="school-registration" element={<SchoolRegistration />} />
         <Route path="events" element={<EventsPage />} />
+        <Route path="gallery" element={<Gallery />} />
+        <Route path="messages" element={<MessagesPage />} />
         {/* Future routes go here */}
         {/* <Route path="events" element={<Events />} /> */}
-        {/* <Route path="gallery" element={<Gallery />} /> */}
       </Route>
     </Routes>
   );

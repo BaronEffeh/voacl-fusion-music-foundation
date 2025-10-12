@@ -31,7 +31,7 @@ const Navbar = () => {
     >
 
       <Toolbar sx={{ justifyContent: 'space-between' }}>
-        <img src={Logo} alt="Logo" style={{ height: 50 }} />
+        <RouterLink to="/"><img src={Logo} alt="Logo" style={{ height: 50 }} /></RouterLink>
 
         <Stack direction="row" spacing={3}>
           {menuItems.map((text) => {
