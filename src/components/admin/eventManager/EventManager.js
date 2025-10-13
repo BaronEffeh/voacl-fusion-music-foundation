@@ -123,6 +123,7 @@ export default function EventManager() {
                 borderRadius: 3,
                 boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
                 bgcolor: "#fff5f5",
+                border: "1px solid #FFB4AB",
               }}
             >
               <CardContent sx={{width: "245px", height: "144px"}}>

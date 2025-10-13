@@ -7,6 +7,7 @@ import SchoolRegistration from "../components/admin/schoolRegistration/SchoolReg
 import EventsPage from "../pages/admin/EventsPage";
 import Gallery from "../pages/admin/Gallery";
 import MessagesPage from "../pages/admin/MessagesPage";
+import SettingsPage from "../pages/admin/SettingsPage";
 
 const AdminRoutes = () => {
   return (
@@ -17,6 +18,7 @@ const AdminRoutes = () => {
         <Route path="events" element={<EventsPage />} />
         <Route path="gallery" element={<Gallery />} />
         <Route path="messages" element={<MessagesPage />} />
+        <Route path="settings" element={<SettingsPage />} />
         {/* Future routes go here */}
         {/* <Route path="events" element={<Events />} /> */}
       </Route>

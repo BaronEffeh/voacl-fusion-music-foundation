@@ -35,11 +35,16 @@ export default function Sidebar() {
     <Box
       sx={{
         width: 240,
+        height: "100vh",
         bgcolor: "#FFDDB329",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         py: 2,
+        position: "sticky",
+        top: 0,
+        left: 0,
+        overflow: "hidden",
       }}
     >
       {/* Logo */}

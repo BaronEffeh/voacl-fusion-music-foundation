@@ -8,9 +8,11 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableContainer,
+  // TableContainer,
   TableHead,
   TableRow,
+  Card,
+  CardContent,
 } from "@mui/material";
 import {
   Image,
@@ -115,10 +117,12 @@ export default function GalleryManager() {
       </Grid>
 
       {/* Gallery Table */}
+      <Card>
+        <CardContent>
       <Typography variant="h6" fontWeight="bold" gutterBottom>
         Gallery Information
       </Typography>
-      <TableContainer component={Paper} sx={{ borderRadius: 2, mb: 4 }}>
+      
         <Table>
           <TableHead sx={{ backgroundColor: "#fde0e0" }}>
             <TableRow>
@@ -150,18 +154,19 @@ export default function GalleryManager() {
                 <TableCell>
                   <Edit
                     fontSize="small"
-                    sx={{ color: "#c62828", mr: 1, cursor: "pointer" }}
+                    sx={{ color: "#350830", mr: 1, cursor: "pointer" }}
                   />
                   <Delete
                     fontSize="small"
-                    sx={{ color: "#555", cursor: "pointer" }}
+                    sx={{ color: "#350830", cursor: "pointer" }}
                   />
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
-      </TableContainer>
+        </CardContent>
+      </Card>
 
       {/* Collections & Video Links */}
       <Grid container spacing={2}>

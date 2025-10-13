@@ -94,7 +94,7 @@ export default function SchoolRegistration() {
               value={event}
               onChange={(e) => setEvent(e.target.value)}
               displayEmpty
-              sx={{ borderRadius: 2 }}
+              sx={{ borderRadius: 2, width: "175px", height: "40px" }}
             >
               <MenuItem value="">Select</MenuItem>
               <MenuItem value="choral">Choral Challenge</MenuItem>
@@ -111,7 +111,7 @@ export default function SchoolRegistration() {
               value={status}
               onChange={(e) => setStatus(e.target.value)}
               displayEmpty
-              sx={{ borderRadius: 2 }}
+              sx={{ borderRadius: 2, width: "175px", height: "40px" }}
             >
               <MenuItem value="">Select</MenuItem>
               <MenuItem value="verified">Verified</MenuItem>

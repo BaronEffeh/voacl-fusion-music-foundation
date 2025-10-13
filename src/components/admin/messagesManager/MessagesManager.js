@@ -8,13 +8,15 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableContainer,
+  // TableContainer,
   TableHead,
   TableRow,
   Stack,
   Dialog,
   DialogContent,
   TextField,
+  Card,
+  CardContent,
 } from "@mui/material";
 import {
   Mail,
@@ -177,7 +179,8 @@ export default function MessagesManager() {
       </Stack>
 
       {/* Table */}
-      <TableContainer component={Paper} sx={{ borderRadius: 2 }}>
+      <Card sx={{ borderRadius: 3, overflow: "hidden" }}>
+        <CardContent>
         <Table>
           <TableHead sx={{ backgroundColor: "#fde0e0" }}>
             <TableRow>
@@ -200,17 +203,18 @@ export default function MessagesManager() {
                 <TableCell>
                   <Visibility
                     fontSize="small"
-                    sx={{ color: "#c62828", mr: 1, cursor: "pointer" }}
+                    sx={{ color: "#350830", mr: 1, cursor: "pointer" }}
                     onClick={() => handleView(msg)}
                   />
-                  <Edit fontSize="small" sx={{ color: "#c62828", mr: 1, cursor: "pointer" }} />
-                  <Delete fontSize="small" sx={{ color: "#555", cursor: "pointer" }} />
+                  <Edit fontSize="small" sx={{ color: "#350830", mr: 1, cursor: "pointer" }} />
+                  <Delete fontSize="small" sx={{ color: "#350830", cursor: "pointer" }} />
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
-      </TableContainer>
+        </CardContent>
+      </Card>
 
       {/* Message Detail Modal */}
       <Dialog open={open} onClose={handleClose} maxWidth="xs" fullWidth>
