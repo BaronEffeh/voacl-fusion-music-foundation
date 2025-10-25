@@ -131,18 +131,21 @@ export default function MessagesManager() {
       </Box>
 
       {/* Summary Cards */}
-      <Grid container spacing={2} sx={{ mb: 4 }}>
+      <Grid container spacing={6} sx={{ mb: 4 }}>
         {stats.map((item, i) => (
           <Grid item xs={12} sm={6} md={3} key={i}>
             <Paper
               elevation={0}
               sx={{
+                width: "216px",
+                height: "144px",
                 p: 2,
                 display: "flex",
                 alignItems: "center",
                 gap: 2,
-                borderRadius: 2,
-                bgcolor: "#fff",
+                border: "1px solid #FFB4AB",
+                borderRadius: "16px",
+                bgcolor: "inherit",
               }}
             >
               <Box>{item.icon}</Box>
@@ -158,6 +161,8 @@ export default function MessagesManager() {
       </Grid>
 
       {/* Message Center */}
+      <Card sx={{ borderRadius: 3, overflow: "hidden" }}>
+        <CardContent>
       <Typography variant="h6" fontWeight="bold" gutterBottom>
         Message Center
       </Typography>
@@ -179,8 +184,7 @@ export default function MessagesManager() {
       </Stack>
 
       {/* Table */}
-      <Card sx={{ borderRadius: 3, overflow: "hidden" }}>
-        <CardContent>
+      
         <Table>
           <TableHead sx={{ backgroundColor: "#fde0e0" }}>
             <TableRow>

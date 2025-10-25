@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -12,6 +12,8 @@ import {
   TableCell,
   TableBody,
   IconButton,
+  Modal,
+  TextField,
 } from "@mui/material";
 import {
   Event,
@@ -61,30 +63,31 @@ const events = [
     time: "2:00pm",
     location: "Transcorp Hilton, Abuja",
   },
-  {
-    title: "Voice Training Workshop",
-    type: "Workshop",
-    date: "Sept 12, 2025",
-    time: "2:00pm",
-    location: "Transcorp Hilton, Abuja",
-  },
-  {
-    title: "Choral Challenge",
-    type: "Competition",
-    date: "Sept 12, 2025",
-    time: "2:00pm",
-    location: "Transcorp Hilton, Abuja",
-  },
-  {
-    title: "Winners Concert",
-    type: "Concert",
-    date: "Sept 12, 2025",
-    time: "2:00pm",
-    location: "Transcorp Hilton, Abuja",
-  },
 ];
 
 export default function EventManager() {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const [formData, setFormData] = useState({
+    title: "",
+    type: "",
+    date: "",
+    time: "",
+    location: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Event Added:", formData);
+    handleClose();
+  };
+
   return (
     <Box sx={{ p: 2 }}>
       {/* Header */}
@@ -109,6 +112,7 @@ export default function EventManager() {
             color: "#d32f2f",
             "&:hover": { bgcolor: "#fde0dc" },
           }}
+          onClick={handleOpen}
         >
           Add Event
         </Button>
@@ -126,7 +130,7 @@ export default function EventManager() {
                 border: "1px solid #FFB4AB",
               }}
             >
-              <CardContent sx={{width: "245px", height: "144px"}}>
+              <CardContent sx={{ width: "245px", height: "144px" }}>
                 <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
                   {stat.icon}
                   <Typography
@@ -192,6 +196,95 @@ export default function EventManager() {
           </Typography>
         </CardContent>
       </Card>
+
+      {/* Add Event Modal */}
+      <Modal open={open} onClose={handleClose}>
+        <Box
+          component="form"
+          onSubmit={handleSubmit}
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            bgcolor: "#fff",
+            p: 4,
+            borderRadius: "12px",
+            boxShadow: 24,
+            width: 380,
+          }}
+        >
+          <Typography variant="subtitle1" sx={{ mb: 2, fontWeight: 600 }}>
+            Add New Event
+          </Typography>
+
+          <TextField
+            label="Event Title"
+            name="title"
+            fullWidth
+            value={formData.title}
+            onChange={handleChange}
+            sx={{ mb: 2 }}
+          />
+          <TextField
+            label="Event Type"
+            name="type"
+            fullWidth
+            value={formData.type}
+            onChange={handleChange}
+            sx={{ mb: 2 }}
+          />
+
+          <Grid container spacing={2} sx={{ mb: 2 }}>
+            <Grid item xs={6}>
+              <TextField
+                label="Date"
+                name="date"
+                type="date"
+                fullWidth
+                InputLabelProps={{ shrink: true }}
+                value={formData.date}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                label="Time"
+                name="time"
+                type="time"
+                fullWidth
+                InputLabelProps={{ shrink: true }}
+                value={formData.time}
+                onChange={handleChange}
+              />
+            </Grid>
+          </Grid>
+
+          <TextField
+            label="Location"
+            name="location"
+            fullWidth
+            value={formData.location}
+            onChange={handleChange}
+            sx={{ mb: 3 }}
+          />
+
+          <Button
+            type="submit"
+            fullWidth
+            sx={{
+              backgroundColor: "#B71C1C",
+              color: "#fff",
+              borderRadius: "12px",
+              textTransform: "none",
+              py: 1.5,
+              "&:hover": { backgroundColor: "#9A1212" },
+            }}
+          >
+            Add Event
+          </Button>
+        </Box>
+      </Modal>
     </Box>
   );
 }
