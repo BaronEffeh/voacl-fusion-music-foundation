@@ -3,6 +3,8 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 import ScrollToTop from "./components/public/ScrollToTop";
 
@@ -20,6 +22,9 @@ const App = () => {
         {/* Admin dashboard routes */}
         <Route path="/admin/*" element={<AdminRoutes />} />
       </Routes>
+
+      {/* Toast notification container */}
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
     </Router>
   );
 };
