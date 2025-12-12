@@ -22,6 +22,7 @@ export default function EventManager() {
   const [formData, setFormData] = useState({
     title: "",
     type: "",
+    description: "",
     date: "",
     time: "",
     location: "",
@@ -60,6 +61,7 @@ export default function EventManager() {
     const payload = {
       title: formData.title,
       type: formData.type,
+      description: formData.description,
       location: formData.location,
       date: eventDateTime,
     };
@@ -82,7 +84,7 @@ export default function EventManager() {
 
       setOpen(false);
       setEditingEvent(null);
-      setFormData({ title: "", type: "", date: "", time: "", location: "" });
+      setFormData({ title: "", type: "", description: "", date: "", time: "", location: "" });
     } catch (error) {
       console.error("Error saving event:", error.response?.data || error.message);
       toast.error(error.response?.data?.message || "Failed to save event");
@@ -110,6 +112,7 @@ export default function EventManager() {
     setFormData({
       title: event.title,
       type: event.type,
+      description: event.description,
       location: event.location,
       date: eventDate.toISOString().split("T")[0],
       time: eventDate.toTimeString().slice(0, 5),
@@ -163,6 +166,14 @@ export default function EventManager() {
             name="type"
             fullWidth
             value={formData.type}
+            onChange={handleChange}
+            sx={{ mb: 2 }}
+          />
+          <TextField
+            label="Event Description"
+            name="description"
+            fullWidth
+            value={formData.description}
             onChange={handleChange}
             sx={{ mb: 2 }}
           />
