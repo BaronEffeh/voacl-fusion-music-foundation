@@ -142,54 +142,6 @@ const handleSubmit = async (e) => {
   }
 };
 
-
-  // /** Add or Update media */
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setSaving(true);
-
-  //   try {
-  //     const data = new FormData();
-  //     data.append("mediaType", formData.mediaType);
-  //     data.append("event", formData.event);
-  //     data.append("caption", formData.caption);
-
-  //     if (formData.mediaType === "image" && formData.file)
-  //       data.append("file", formData.file);
-  //     if (formData.mediaType === "video" && formData.videoUrl)
-  //       data.append("videoUrl", formData.videoUrl);
-
-  //     let response;
-  //     if (editingItem) {
-  //       response = await axios.put(
-  //         `${API_BASE_URL}/${editingItem._id}`,
-  //         data,
-  //         { headers: { "Content-Type": "multipart/form-data" } }
-  //       );
-  //       setGallery((prev) =>
-  //         prev.map((g) => (g._id === editingItem._id ? response.data : g))
-  //       );
-  //       showSuccess("Media updated successfully");
-  //     } else {
-  //       // ✅ Correct upload endpoint
-  //       response = await axios.post(`${API_BASE_URL}/upload`, data, {
-  //         headers: { "Content-Type": "multipart/form-data" },
-  //       });
-  //       setGallery((prev) => [...prev, response.data]);
-  //       showSuccess("Media uploaded successfully");
-  //     }
-
-  //     setOpen(false);
-  //     setEditingItem(null);
-  //     setFormData({ mediaType: "", event: "", caption: "", file: null, videoUrl: "" });
-  //   } catch (error) {
-  //     console.error("Error saving media:", error.response?.data || error.message);
-  //     showError(error.response?.data?.message || "Failed to upload media");
-  //   } finally {
-  //     setSaving(false);
-  //   }
-  // };
-
   /** Delete media */
   const handleDelete = async () => {
     if (!deleteTarget) return;

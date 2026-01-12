@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import { Box, Typography, CircularProgress } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import SchoolFilterSection from "../../components/admin/schoolRegistration/SchoolFilterSection";
 import SchoolTableSection from "../../components/admin/schoolRegistration/SchoolTableSection";
 
@@ -55,31 +55,32 @@ export default function SchoolRegistration() {
   }, [page]);
 
   /** Filter */
-  const handleFilter = () => {
-    let filtered = [...schools];
+  const handleFilter = useCallback(() => {
+  let filtered = [...schools];
 
-    if (status)
-      filtered = filtered.filter(
-        (s) => s.paymentStatus.toLowerCase() === status.toLowerCase()
-      );
+  if (status) {
+    filtered = filtered.filter(
+      (s) => s.paymentStatus.toLowerCase() === status.toLowerCase()
+    );
+  }
 
-    if (search.trim()) {
-      const keyword = search.toLowerCase();
-      filtered = filtered.filter(
-        (s) =>
-          s.name.toLowerCase().includes(keyword) ||
-          s.email.toLowerCase().includes(keyword) ||
-          s.state.toLowerCase().includes(keyword) ||
-          (s.coordinator || "").toLowerCase().includes(keyword)
-      );
-    }
+  if (search.trim()) {
+    const keyword = search.toLowerCase();
+    filtered = filtered.filter(
+      (s) =>
+        s.name.toLowerCase().includes(keyword) ||
+        s.email.toLowerCase().includes(keyword) ||
+        s.state.toLowerCase().includes(keyword) ||
+        (s.coordinator || "").toLowerCase().includes(keyword)
+    );
+  }
 
-    setFilteredSchools(filtered);
-  };
+  setFilteredSchools(filtered);
+}, [schools, status, search]);
 
   useEffect(() => {
-    handleFilter();
-  }, [event, status, search, schools]);
+  handleFilter();
+}, [handleFilter]);
 
   /** DELETE school */
   const handleDeleteSchool = async (id) => {
@@ -104,18 +105,6 @@ export default function SchoolRegistration() {
   }
 };
 
-  // const handleTogglePayment = async (school) => {
-  //   try {
-  //     await axios.put(`${API_BASE_URL}/schools/${school.id}`, {
-  //       payment_status: school.payment_status,
-  //     });
-
-  //     fetchSchools(page);
-  //   } catch (error) {
-  //     console.error("Payment update failed:", error.response?.data || error);
-  //   }
-  // };
-
   return (
     <Box>
       <Typography variant="h6" fontWeight="bold" gutterBottom>
@@ -132,20 +121,15 @@ export default function SchoolRegistration() {
         handleFilter={handleFilter}
       />
 
-      {loading ? (
-        <Box display="flex" justifyContent="center" p={4}>
-          <CircularProgress color="error" />
-        </Box>
-      ) : (
-        <SchoolTableSection
-          schools={filteredSchools}
-          page={page}
-          totalPages={totalPages}
-          setPage={setPage}
-          onDelete={handleDeleteSchool}
-          onTogglePayment={handleTogglePayment}
-        />
-      )}
+      <SchoolTableSection
+        schools={filteredSchools}
+        page={page}
+        totalPages={totalPages}
+        setPage={setPage}
+        onDelete={handleDeleteSchool}
+        onTogglePayment={handleTogglePayment}
+        loading={loading}
+      />
     </Box>
   );
 }
