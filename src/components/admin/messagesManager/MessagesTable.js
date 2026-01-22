@@ -1,3 +1,4 @@
+// MessagesTable.js
 import React, { useState } from "react";
 import {
   Typography,
@@ -9,15 +10,20 @@ import {
   TableHead,
   TableRow,
   Dialog,
-  DialogContent,
   TextField,
   Card,
   CardContent,
   CircularProgress,
+  Box,
 } from "@mui/material";
 import { Edit, Delete, Visibility, Close } from "@mui/icons-material";
 
-export default function MessagesTable({ messages, loading, onMarkAsRead }) {
+export default function MessagesTable({
+  messages,
+  loading,
+  onMarkAsRead,
+  onDelete,
+}) {
   const [filter, setFilter] = useState("All");
   const [open, setOpen] = useState(false);
   const [selectedMsg, setSelectedMsg] = useState(null);
@@ -31,7 +37,6 @@ export default function MessagesTable({ messages, loading, onMarkAsRead }) {
     setSelectedMsg(msg);
     setOpen(true);
 
-    // Mark as Read when opened
     if (msg.status !== "Read") {
       onMarkAsRead(msg.id);
     }
@@ -59,12 +64,7 @@ export default function MessagesTable({ messages, loading, onMarkAsRead }) {
                 variant={filter === type ? "contained" : "outlined"}
                 color="error"
                 onClick={() => setFilter(type)}
-                sx={{
-                  borderRadius: 5,
-                  textTransform: "none",
-                  fontSize: 13,
-                  px: 2,
-                }}
+                sx={{ borderRadius: 5, textTransform: "none", fontSize: 13, px: 2 }}
               >
                 {type}
               </Button>
@@ -121,11 +121,12 @@ export default function MessagesTable({ messages, loading, onMarkAsRead }) {
                         sx={{ color: "#350830", mr: 1, cursor: "pointer" }}
                         onClick={() => handleView(msg)}
                       />
-                      <Edit
+                      <Edit fontSize="small" sx={{ color: "#350830", mr: 1 }} />
+                      <Delete
                         fontSize="small"
-                        sx={{ color: "#350830", mr: 1 }}
+                        sx={{ color: "#350830", cursor: "pointer" }}
+                        onClick={() => onDelete(msg.id)}
                       />
-                      <Delete fontSize="small" sx={{ color: "#350830" }} />
                     </TableCell>
                   </TableRow>
                 ))
@@ -137,54 +138,273 @@ export default function MessagesTable({ messages, loading, onMarkAsRead }) {
 
       {/* Message Detail Modal */}
       <Dialog open={open} onClose={handleClose} maxWidth="xs" fullWidth>
-        <DialogContent sx={{ p: 3, bgcolor: "#fffaf9" }}>
-          <Stack
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-            mb={1}
-          >
-            <Typography variant="h6" fontWeight="bold">
-              Message Details
-            </Typography>
-            <Close onClick={handleClose} sx={{ cursor: "pointer" }} />
-          </Stack>
-
           {selectedMsg && (
-            <Stack spacing={2}>
-              <TextField
-                label="Full Name"
-                value={selectedMsg.sender_name}
-                fullWidth
-                InputProps={{ readOnly: true }}
-              />
-              <TextField
-                label="Email"
-                value={selectedMsg.email}
-                fullWidth
-                InputProps={{ readOnly: true }}
-              />
-              <TextField
-                label="Phone"
-                value={selectedMsg.phone || "—"}
-                fullWidth
-                InputProps={{ readOnly: true }}
-              />
-              <TextField
-                label="Message"
-                value={selectedMsg.content}
-                fullWidth
-                multiline
-                minRows={3}
-                InputProps={{ readOnly: true }}
-              />
-            </Stack>
+            <Box
+              sx={{
+                bgcolor: "#fff",
+                p: 2.5,
+                borderRadius: 3,
+              }}
+            >
+              <Stack
+                direction="row"
+                justifyContent="space-between"
+                alignItems="center"
+                mb={2}
+              >
+                <Typography fontWeight="bold">Message Details</Typography>
+                <Close onClick={handleClose} sx={{ cursor: "pointer" }} />
+              </Stack>
+
+              <Stack spacing={2}>
+                <TextField
+                  label="Full Name"
+                  value={selectedMsg.sender_name}
+                  fullWidth
+                  InputProps={{ readOnly: true }}
+                />
+                <TextField
+                  label="Email Address"
+                  value={selectedMsg.email}
+                  fullWidth
+                  InputProps={{ readOnly: true }}
+                />
+                <TextField
+                  label="Phone Number"
+                  value={selectedMsg.phone || "Nil"}
+                  fullWidth
+                  InputProps={{ readOnly: true }}
+                />
+                <TextField
+                  label="School/Organization Name"
+                  value={selectedMsg.school?.name || "—"}
+                  fullWidth
+                  InputProps={{ readOnly: true }}
+                />
+                <TextField
+                  label="Message"
+                  value={selectedMsg.content}
+                  fullWidth
+                  multiline
+                  minRows={4}
+                  InputProps={{ readOnly: true }}
+                />
+
+                {/* Reply Button */}
+                <Button
+                  fullWidth
+                  sx={{
+                    mt: 2,
+                    bgcolor: "#b71c1c",
+                    color: "#fff",
+                    borderRadius: 3,
+                    py: 1.2,
+                    textTransform: "none",
+                    "&:hover": { bgcolor: "#9a1212" },
+                  }}
+                >
+                  Reply
+                </Button>
+              </Stack>
+            </Box>
           )}
-        </DialogContent>
       </Dialog>
     </>
   );
 }
+
+
+
+
+
+
+// import React, { useState } from "react";
+// import {
+//   Typography,
+//   Stack,
+//   Button,
+//   Table,
+//   TableBody,
+//   TableCell,
+//   TableHead,
+//   TableRow,
+//   Dialog,
+//   DialogContent,
+//   TextField,
+//   Card,
+//   CardContent,
+//   CircularProgress,
+// } from "@mui/material";
+// import { Edit, Delete, Visibility, Close } from "@mui/icons-material";
+
+// export default function MessagesTable({ messages, loading, onMarkAsRead }) {
+//   const [filter, setFilter] = useState("All");
+//   const [open, setOpen] = useState(false);
+//   const [selectedMsg, setSelectedMsg] = useState(null);
+
+//   const filteredMessages =
+//     filter === "All"
+//       ? messages
+//       : messages.filter((msg) => msg.status === filter);
+
+//   const handleView = (msg) => {
+//     setSelectedMsg(msg);
+//     setOpen(true);
+
+//     // Mark as Read when opened
+//     if (msg.status !== "Read") {
+//       onMarkAsRead(msg.id);
+//     }
+//   };
+
+//   const handleClose = () => {
+//     setOpen(false);
+//     setSelectedMsg(null);
+//   };
+
+//   return (
+//     <>
+//       <Card sx={{ borderRadius: 3, overflow: "hidden" }}>
+//         <CardContent>
+//           <Typography variant="h6" fontWeight="bold" gutterBottom>
+//             Message Center
+//           </Typography>
+
+//           {/* Filters */}
+//           <Stack direction="row" spacing={1} sx={{ mb: 2 }}>
+//             {["All", "Unread", "Read", "Replied"].map((type) => (
+//               <Button
+//                 key={type}
+//                 size="small"
+//                 variant={filter === type ? "contained" : "outlined"}
+//                 color="error"
+//                 onClick={() => setFilter(type)}
+//                 sx={{
+//                   borderRadius: 5,
+//                   textTransform: "none",
+//                   fontSize: 13,
+//                   px: 2,
+//                 }}
+//               >
+//                 {type}
+//               </Button>
+//             ))}
+//           </Stack>
+
+//           <Table>
+//             <TableHead sx={{ backgroundColor: "#fde0e0" }}>
+//               <TableRow>
+//                 <TableCell>Sender Name</TableCell>
+//                 <TableCell>Email Address</TableCell>
+//                 <TableCell>Subject</TableCell>
+//                 <TableCell>Date</TableCell>
+//                 <TableCell>Status</TableCell>
+//                 <TableCell>Actions</TableCell>
+//               </TableRow>
+//             </TableHead>
+
+//             <TableBody>
+//               {loading ? (
+//                 <TableRow>
+//                   <TableCell colSpan={6} align="center" sx={{ py: 4 }}>
+//                     <CircularProgress color="error" size={28} />
+//                     <Typography variant="body2" sx={{ mt: 1, color: "#777" }}>
+//                       Loading messages...
+//                     </Typography>
+//                   </TableCell>
+//                 </TableRow>
+//               ) : filteredMessages.length === 0 ? (
+//                 <TableRow>
+//                   <TableCell colSpan={6} align="center" sx={{ py: 4 }}>
+//                     <Typography>No messages found.</Typography>
+//                   </TableCell>
+//                 </TableRow>
+//               ) : (
+//                 filteredMessages.map((msg) => (
+//                   <TableRow
+//                     key={msg.id}
+//                     sx={{
+//                       backgroundColor:
+//                         msg.status === "Unread" ? "#fff3f3" : "inherit",
+//                     }}
+//                   >
+//                     <TableCell>{msg.sender_name}</TableCell>
+//                     <TableCell>{msg.email}</TableCell>
+//                     <TableCell>{msg.subject}</TableCell>
+//                     <TableCell>
+//                       {new Date(msg.created_at).toLocaleDateString()}
+//                     </TableCell>
+//                     <TableCell>{msg.status}</TableCell>
+//                     <TableCell>
+//                       <Visibility
+//                         fontSize="small"
+//                         sx={{ color: "#350830", mr: 1, cursor: "pointer" }}
+//                         onClick={() => handleView(msg)}
+//                       />
+//                       <Edit
+//                         fontSize="small"
+//                         sx={{ color: "#350830", mr: 1 }}
+//                       />
+//                       <Delete fontSize="small" sx={{ color: "#350830" }} />
+//                     </TableCell>
+//                   </TableRow>
+//                 ))
+//               )}
+//             </TableBody>
+//           </Table>
+//         </CardContent>
+//       </Card>
+
+//       {/* Message Detail Modal */}
+//       <Dialog open={open} onClose={handleClose} maxWidth="xs" fullWidth>
+//         <DialogContent sx={{ p: 3, bgcolor: "#fffaf9" }}>
+//           <Stack
+//             direction="row"
+//             justifyContent="space-between"
+//             alignItems="center"
+//             mb={1}
+//           >
+//             <Typography variant="h6" fontWeight="bold">
+//               Message Details
+//             </Typography>
+//             <Close onClick={handleClose} sx={{ cursor: "pointer" }} />
+//           </Stack>
+
+//           {selectedMsg && (
+//             <Stack spacing={2}>
+//               <TextField
+//                 label="Full Name"
+//                 value={selectedMsg.sender_name}
+//                 fullWidth
+//                 InputProps={{ readOnly: true }}
+//               />
+//               <TextField
+//                 label="Email"
+//                 value={selectedMsg.email}
+//                 fullWidth
+//                 InputProps={{ readOnly: true }}
+//               />
+//               <TextField
+//                 label="Phone"
+//                 value={selectedMsg.phone || "—"}
+//                 fullWidth
+//                 InputProps={{ readOnly: true }}
+//               />
+//               <TextField
+//                 label="Message"
+//                 value={selectedMsg.content}
+//                 fullWidth
+//                 multiline
+//                 minRows={3}
+//                 InputProps={{ readOnly: true }}
+//               />
+//             </Stack>
+//           )}
+//         </DialogContent>
+//       </Dialog>
+//     </>
+//   );
+// }
 
 
 
