@@ -17,7 +17,7 @@ import {
 } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import { showSuccess, showError } from "../../../utils/toastConfig";
+// import { showSuccess, showError } from "../../../utils/toastConfig";
 
 const steps = [
   {
@@ -121,10 +121,10 @@ const MultiStepForm = () => {
       { headers: { "Content-Type": "application/json" } }
     );
 
-    console.log("✅ Registration success:", response.data);
+    console.log("Registration success:", response.data);
     setSuccessOpen(true);
   } catch (error) {
-    console.error("❌ Error submitting registration:", error.response?.data || error);
+    console.error("Error submitting registration:", error.response?.data || error);
     alert(JSON.stringify(error.response?.data || error.message, null, 2));
   }
 };
