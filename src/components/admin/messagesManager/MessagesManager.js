@@ -78,11 +78,11 @@ export default function MessagesManager() {
   /** Mark message as Read */
   const handleMarkAsRead = async (id) => {
     try {
-      await axios.patch(`${API_BASE_URL}/messages/${id}`, { status: "Read" });
+      await axios.patch(`${API_BASE_URL}/messages/${id}/status`, { "status": "read" });
 
       setMessages((prev) =>
         prev.map((m) =>
-          m.id === id ? { ...m, status: "Read" } : m
+          m.id === id ? { ...m, "status": "read" } : m
         )
       );
     } catch (error) {

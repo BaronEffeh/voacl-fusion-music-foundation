@@ -180,6 +180,9 @@ const ContactForm = () => {
             margin="normal"
           />
 
+          {successMsg && <Typography sx={{ color: "green", mb: 2 }}>{successMsg}</Typography>}
+          {errorMsg && <Typography sx={{ color: "red", mb: 2 }}>{errorMsg}</Typography>}
+
           <Button
             type="submit"
             fullWidth

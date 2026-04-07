@@ -19,7 +19,7 @@ import {
   DialogTitle,
   CircularProgress,
 } from "@mui/material";
-import { Delete, Visibility } from "@mui/icons-material";
+import { Delete, Visibility, Edit, Check } from "@mui/icons-material";
 
 export default function SchoolTableSection({
   schools,
@@ -34,6 +34,16 @@ export default function SchoolTableSection({
   const [paymentModal, setPaymentModal] = useState({ open: false, school: null });
   const [deleteModal, setDeleteModal] = useState({ open: false, school: null });
   const [newPaymentStatus, setNewPaymentStatus] = useState("");
+  const [editModal, setEditModal] = useState({ open: false, school: null, view: "menu", });
+  const [eventStep, setEventStep] = useState(1);
+  const [selectedEvent, setSelectedEvent] = useState("");
+  const [generatedCode, setGeneratedCode] = useState("");
+  const [copied, setCopied] = useState(false);
+  const [eventCounters, setEventCounters] = useState({
+    choral: 1,
+    vfmf: 1,
+    winners: 1,
+  });
 
   return (
     <>
@@ -74,10 +84,11 @@ export default function SchoolTableSection({
               ) : (
                 schools.map((school) => (
                   <TableRow key={school.id}>
-                    <TableCell>{school.name}</TableCell>
-                    <TableCell>{school.email}</TableCell>
-                    <TableCell>{school.state}</TableCell>
-                    <TableCell>{school.coordinator || "---"}</TableCell>
+                    <TableCell>{school.name || "---"}</TableCell>
+                    <TableCell>{school.email || "---"}</TableCell>
+                    <TableCell>{school.state || "---"}</TableCell>
+                    {/* <TableCell>{school.coordinator || "---"}</TableCell> */}
+                    <TableCell>{school.choirCoordinator || "---"}</TableCell>
 
                     <TableCell>
                       <Typography
@@ -102,6 +113,15 @@ export default function SchoolTableSection({
                       <IconButton
                         size="small"
                         sx={{ color: "#350830" }}
+                          onClick={() =>
+                          setEditModal({ open: true, school, view: "menu" })
+                        }
+                      >
+                        <Edit fontSize="small" />
+                      </IconButton>
+                      <IconButton
+                        size="small"
+                        sx={{ color: "#350830" }}
                         onClick={() => setSelectedSchool(school.fullData)}
                       >
                         <Visibility fontSize="small" />
@@ -116,6 +136,7 @@ export default function SchoolTableSection({
                       >
                         <Delete fontSize="small" />
                       </IconButton>
+
                     </TableCell>
                   </TableRow>
                 ))
@@ -269,8 +290,9 @@ export default function SchoolTableSection({
               <Typography><strong>Address:</strong> {selectedSchool.address}</Typography>
               <Typography><strong>City:</strong> {selectedSchool.city}</Typography>
               <Typography><strong>State:</strong> {selectedSchool.state}</Typography>
-              <Typography><strong>Principal:</strong> {selectedSchool.principal_name}</Typography>
-              <Typography><strong>Coordinator:</strong> {selectedSchool.coordination_name}</Typography>
+              <Typography><strong>Principal:</strong> {selectedSchool.principalName}</Typography>
+              {/* <Typography><strong>Coordinator:</strong> {selectedSchool.coordination_name}</Typography> */}
+              <Typography><strong>Coordinator:</strong> {selectedSchool.choirCoordinator}</Typography>
               <Typography><strong>Payment Status:</strong> {selectedSchool.payment_status}</Typography>
               <Typography><strong>Created:</strong> {selectedSchool.created_at}</Typography>
             </Box>
@@ -286,6 +308,291 @@ export default function SchoolTableSection({
             Close
           </Button>
         </DialogActions>
+      </Dialog>
+
+      {/* EDIT OPTIONS MODAL */}
+      <Dialog
+        open={editModal.open}
+        onClose={() => setEditModal({ open: false, school: null, view: "menu" })}
+        maxWidth="xs"
+        fullWidth
+      >
+        <DialogContent sx={{ p: 3 }}>
+          
+          {/* ================= MENU VIEW ================= */}
+          {editModal.view === "menu" && (
+            <Box>
+              <Typography
+                sx={{ mb: 2, cursor: "pointer", pl: 1,
+                  "&:hover": {
+                    backgroundColor: "#EFDEE6",
+                  },
+                 }}
+                onClick={() =>
+                  setEditModal((prev) => ({ ...prev, view: "payment" }))
+                }
+              >
+                Change Payment Status
+              </Typography>
+
+              <Typography
+                sx={{ cursor: "pointer", pl: 1,
+                  "&:hover": {
+                    backgroundColor: "#EFDEE6",
+                  },
+                 }}
+                 onClick={() => {
+                  setEventStep(1);
+                  setSelectedEvent("");
+                  setGeneratedCode("");
+                  setEditModal((prev) => ({ ...prev, view: "code" }));
+                  setCopied(false);
+                }}
+                // onClick={() =>
+                //   setEditModal((prev) => ({ ...prev, view: "code" }))
+                // }
+              >
+                Generate Event Code Pass
+              </Typography>
+            </Box>
+          )}
+
+          {/* ================= PAYMENT FORM ================= */}
+          {editModal.view === "payment" && (
+            <>
+              <Typography fontWeight={600} sx={{ mb: 2 }}>
+                Change Payment Status
+              </Typography>
+
+              <TextField
+                select
+                SelectProps={{ native: true }}
+                fullWidth
+                value={newPaymentStatus}
+                onChange={(e) => setNewPaymentStatus(e.target.value)}
+                sx={{ mb: 3 }}
+              >
+                <option value="">Select</option>
+                <option value="Unverified">Unverified</option>
+                <option value="Verified">Verified</option>
+              </TextField>
+
+              <Button
+                fullWidth
+                variant="contained"
+                sx={{
+                  backgroundColor: "#B71C1C",
+                  borderRadius: "12px",
+                  textTransform: "none",
+                  py: 1.4,
+                }}
+                onClick={() => {
+                  onTogglePayment({
+                    id: editModal.school.id,
+                    payment_status: newPaymentStatus,
+                  });
+
+                  setEditModal({ open: false, school: null, view: "menu" });
+                  setNewPaymentStatus("");
+                }}
+              >
+                Save
+              </Button>
+
+              <Button
+                fullWidth
+                sx={{ mt: 1, textTransform: "none" }}
+                onClick={() =>
+                  setEditModal((prev) => ({ ...prev, view: "menu" }))
+                }
+              >
+                Back
+              </Button>
+            </>
+          )}
+
+          {/* ================= EVENT CODE FORM ================= */}
+          {editModal.view === "code" && (
+            <>
+              {/* STEP 1: SELECT DROPDOWN */}
+              {eventStep === 1 && (
+                <>
+                  <Typography fontWeight={600} sx={{ mb: 2 }}>
+                    Event
+                  </Typography>
+
+                  <TextField
+                    select
+                    SelectProps={{ native: true }}
+                    fullWidth
+                    value={selectedEvent}
+                    onChange={(e) => {
+                      setSelectedEvent(e.target.value);
+                      setEventStep(2);
+                    }}
+                    sx={{ mb: 2 }}
+                  >
+                    <option value="">Select</option>
+                    <option value="choral">Choral Challenge</option>
+                    <option value="vfmf">VFMF Seminar</option>
+                    <option value="winners">Winners Concert</option>
+                  </TextField>
+                </>
+              )}
+
+              {/* STEP 2: SHOW SELECTED EVENT */}
+              {eventStep === 2 && (
+                <>
+                  <Typography fontWeight={600} sx={{ mb: 2 }}>
+                    Event
+                  </Typography>
+
+                  <TextField
+                    select
+                    SelectProps={{ native: true }}
+                    fullWidth
+                    value={selectedEvent}
+                    onChange={(e) => setSelectedEvent(e.target.value)}
+                    sx={{ mb: 3 }}
+                  >
+                    <option value="choral">Choral Challenge</option>
+                    <option value="vfmf">VFMF Seminar</option>
+                    <option value="winners">Winners Concert</option>
+                  </TextField>
+
+                  <Button
+                    fullWidth
+                    variant="contained"
+                    sx={{
+                      backgroundColor: "#B71C1C",
+                      borderRadius: "12px",
+                      textTransform: "none",
+                      py: 1.4,
+                    }}
+                    onClick={() => {
+                      const fullYear = new Date().getFullYear();
+                      const shortYear = String(fullYear).slice(-2);
+
+                      let prefix = "";
+                      let key = selectedEvent;
+
+                      if (selectedEvent === "choral") prefix = "CHC-SCC";
+                      if (selectedEvent === "vfmf") prefix = "VFMF-SME";
+                      if (selectedEvent === "winners") prefix = "WIN-WCT";
+
+                      // Get current counter for selected event
+                      const currentCount = eventCounters[key];
+
+                      const formattedCounter = String(currentCount).padStart(3, "0");
+
+                      const code = `${prefix}-${fullYear}-${shortYear}-${formattedCounter}`;
+
+                      setGeneratedCode(code);
+                      setCopied(false);
+                      setEventStep(3);
+
+                      // Increment ONLY this event counter
+                      setEventCounters((prev) => ({
+                        ...prev,
+                        [key]: prev[key] + 1,
+                      }));
+                    }}                    
+                  >
+                    Generate
+                  </Button>
+                </>
+              )}
+
+              {/* STEP 3: SHOW CODE + COPY */}
+              {eventStep === 3 && (
+                <>
+                  <Typography fontWeight={600} sx={{ mb: 2 }}>
+                    Event
+                  </Typography>
+
+                  <TextField
+                    select
+                    SelectProps={{ native: true }}
+                    fullWidth
+                    value={selectedEvent}
+                    sx={{ mb: 2 }}
+                  >
+                    <option value="choral">Choral Challenge</option>
+                    <option value="vfmf">VFMF Seminar</option>
+                    <option value="winners">Winners Concert</option>
+                  </TextField>
+
+                  <Box display="flex" gap={1} mb={2}>
+                    <TextField
+                      value={generatedCode}
+                      fullWidth
+                      InputProps={{ readOnly: true }}
+                    />
+
+                    <Button
+                      variant="outlined"
+                      sx={{
+                        minWidth: 80,
+                        borderColor: copied ? "green" : undefined,
+                        color: copied ? "green" : undefined,
+                      }}
+                      onClick={() => {
+                        navigator.clipboard.writeText(generatedCode);
+                        setCopied(true);
+
+                        // optional: reset after 2 seconds
+                        setTimeout(() => setCopied(false), 2000);
+                      }}
+                    >
+                      {copied ? <Check fontSize="small" /> : "Copy"}
+                    </Button>
+
+                    {/* <Button
+                      variant="outlined"
+                      sx={{ minWidth: 60 }}
+                      onClick={() => {
+                        navigator.clipboard.writeText(generatedCode);
+                      }}
+                    >
+                      Copy
+                    </Button> */}
+                  </Box>
+
+                  <Button
+                    fullWidth
+                    variant="contained"
+                    sx={{
+                      backgroundColor: "#B71C1C",
+                      borderRadius: "12px",
+                      textTransform: "none",
+                      py: 1.4,
+                    }}
+                    onClick={() => {
+                      setEditModal({ open: false, school: null, view: "menu" });
+                    }}
+                  >
+                    Done
+                  </Button>
+                </>
+              )}
+
+              {/* BACK BUTTON */}
+              <Button
+                fullWidth
+                sx={{ mt: 1, textTransform: "none" }}
+                onClick={() => {
+                  if (eventStep === 1) {
+                    setEditModal((prev) => ({ ...prev, view: "menu" }));
+                  } else {
+                    setEventStep((prev) => prev - 1);
+                  }
+                }}
+              >
+                Back
+              </Button>
+            </>
+          )}
+        </DialogContent>
       </Dialog>
     </>
   );

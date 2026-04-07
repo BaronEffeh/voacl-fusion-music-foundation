@@ -18,6 +18,8 @@ const QuickActions = () => {
           variant="outlined"
           startIcon={<Add />}
           // color="error"
+          component={RouterLink}
+          to={"/admin/events"}
           sx={{ 
             borderRadius: 5, 
             textTransform: "none", 
@@ -29,6 +31,8 @@ const QuickActions = () => {
           Create Event
         </Button>
         <Button variant="outlined" startIcon={<CreateNewFolderIcon />}
+          component={RouterLink}
+          to={"/admin/gallery"}
           sx={{ 
             borderRadius: 5, 
             textTransform: "none", 
@@ -55,6 +59,8 @@ const QuickActions = () => {
         <Button 
           variant="outlined" 
           startIcon={<EditNoteIcon />}
+          component={RouterLink}
+          to={"/admin/events"}
           sx={{ 
             borderRadius: 5, 
             textTransform: "none", 
