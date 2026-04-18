@@ -18,18 +18,23 @@ import {
 import { useNavigate, useLocation } from "react-router-dom";
 
 const menuItems = [
-  { text: "Dashboard", icon: <Home />, path: "/admin" },
+  { text: "Dashboard", icon: <Home />, path: "/admin/dashboard" },
   { text: "School Registration", icon: <HomeWork />, path: "/admin/school-registration" },
   { text: "Events", icon: <Event />, path: "/admin/events" },
   { text: "Gallery & Media", icon: <Collections />, path: "/admin/gallery" },
   { text: "Messages", icon: <Inbox />, path: "/admin/messages" },
   { text: "Settings", icon: <Settings />, path: "/admin/settings" },
-  { text: "Logout", icon: <Logout />, path: "/logout" },
+  { text: "Logout", icon: <Logout />, action: "logout" }
 ];
 
 export default function Sidebar() {
   const navigate = useNavigate();
   const location = useLocation();
+
+  const handleLogout = () => {
+    localStorage.removeItem("adminAuth");
+    navigate("/admin");
+  };
 
   return (
     <Box
@@ -69,7 +74,14 @@ export default function Sidebar() {
           return (
             <ListItemButton
               key={index}
-              onClick={() => navigate(item.path)}
+              // onClick={() => navigate(item.path)}
+              onClick={() => {
+                if (item.action === "logout") {
+                  handleLogout();
+                } else {
+                  navigate(item.path);
+                }
+              }}
               sx={{
                 mb: 1,
                 backgroundColor: isActive ? "#c62828" : "transparent",

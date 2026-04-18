@@ -31,35 +31,35 @@ export default function SchoolRegistration() {
       email: "gracefieldcollege@gmail.com",
       state: "Abuja",
       coordinator: "Adenuga Bode T.",
-      paymentStatus: "Unverified",
+      proofOfPayment: "Unverified",
     },
     {
       name: "Gracefield College",
       email: "gracefieldcollege@gmail.com",
       state: "Abuja",
       coordinator: "Adenuga Bode T.",
-      paymentStatus: "Verified",
+      proofOfPayment: "Verified",
     },
     {
       name: "Gracefield College",
       email: "gracefieldcollege@gmail.com",
       state: "Abuja",
       coordinator: "Adenuga Bode T.",
-      paymentStatus: "Verified",
+      proofOfPayment: "Verified",
     },
     {
       name: "Gracefield College",
       email: "gracefieldcollege@gmail.com",
       state: "Abuja",
       coordinator: "Adenuga Bode T.",
-      paymentStatus: "Unverified",
+      proofOfPayment: "Unverified",
     },
     {
       name: "Gracefield College",
       email: "gracefieldcollege@gmail.com",
       state: "Abuja",
       coordinator: "Adenuga Bode T.",
-      paymentStatus: "Verified",
+      proofOfPayment: "Verified",
     },
   ];
 
@@ -182,13 +182,13 @@ export default function SchoolRegistration() {
                         <Typography
                             sx={{
                             color:
-                                school.paymentStatus === "Verified"
+                                school.proofOfPayment === "Verified"
                                 ? "green"
                                 : "error.main",
                             fontWeight: "bold",
                             }}
                         >
-                            {school.paymentStatus}
+                            {school.proofOfPayment}
                         </Typography>
                         </TableCell>
                         <TableCell>

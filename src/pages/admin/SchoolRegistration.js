@@ -34,8 +34,8 @@ export default function SchoolRegistration() {
         name: s.name,
         email: s.email,
         state: s.state,
-        coordinator: s.coordination_name,
-        paymentStatus: s.payment_status || "Unverified",
+        choirCoordinator: s.choirCoordinator,
+        proofOfPayment: s.proofOfPayment || "Unverified",
         fullData: s,
       }));
 
@@ -60,7 +60,7 @@ export default function SchoolRegistration() {
 
   if (status) {
     filtered = filtered.filter(
-      (s) => s.paymentStatus.toLowerCase() === status.toLowerCase()
+      (s) => s.proofOfPayment.toLowerCase() === status.toLowerCase()
     );
   }
 
@@ -71,7 +71,7 @@ export default function SchoolRegistration() {
         s.name.toLowerCase().includes(keyword) ||
         s.email.toLowerCase().includes(keyword) ||
         s.state.toLowerCase().includes(keyword) ||
-        (s.coordinator || "").toLowerCase().includes(keyword)
+        (s.choirCoordinator || "").toLowerCase().includes(keyword)
     );
   }
 
@@ -96,7 +96,7 @@ export default function SchoolRegistration() {
   const handleTogglePayment = async (school) => {
   try {
     await axios.patch(`${API_BASE_URL}/schools/${school.id}`, {
-      payment_status: school.payment_status,
+      proofOfPayment: school.proofOfPayment,
     });
 
     fetchSchools(page);
@@ -176,7 +176,7 @@ export default function SchoolRegistration() {
 //         email: s.email,
 //         state: s.state,
 //         coordinator: s.coordination_name,
-//         paymentStatus: s.payment_status || "Unverified",
+//         proofOfPayment: s.proofOfPayment || "Unverified",
 //         fullData: s, // store all fields for modal
 //       }));
 
@@ -206,7 +206,7 @@ export default function SchoolRegistration() {
 
 //     if (status)
 //       filtered = filtered.filter(
-//         (s) => s.paymentStatus.toLowerCase() === status.toLowerCase()
+//         (s) => s.proofOfPayment.toLowerCase() === status.toLowerCase()
 //       );
 
 //     if (search.trim()) {
@@ -243,7 +243,7 @@ export default function SchoolRegistration() {
 //   const handleTogglePayment = async (school) => {
 //   try {
 //     await axios.put(`${API_BASE_URL}/schools/${school.id}`, {
-//       payment_status: school.payment_status,
+//       proofOfPayment: school.proofOfPayment,
 //     });
 
 //     fetchSchools(page); // refresh list
@@ -254,11 +254,11 @@ export default function SchoolRegistration() {
 
 //   // const handleTogglePayment = async (school) => {
 //   //   const newStatus =
-//   //     school.paymentStatus === "Verified" ? "Unverified" : "Verified";
+//   //     school.proofOfPayment === "Verified" ? "Unverified" : "Verified";
 
 //   //   try {
 //   //     await axios.put(`${API_BASE_URL}/schools/${school.id}`, {
-//   //       payment_status: newStatus,
+//   //       proofOfPayment: newStatus,
 //   //     });
 
 //   //     fetchSchools(page);
@@ -334,7 +334,7 @@ export default function SchoolRegistration() {
 //         email: s.email,
 //         state: s.state,
 //         coordinator: s.coordination_name || "—",
-//         paymentStatus: s.payment_status || "Pending",
+//         proofOfPayment: s.proofOfPayment || "Pending",
 //         event: "choral", // ❗ Temporary. Will change once backend adds event_id.
 //       }));
 
@@ -361,7 +361,7 @@ export default function SchoolRegistration() {
 
 //     if (status)
 //       filtered = filtered.filter(
-//         (s) => (s.paymentStatus || "").toLowerCase() === status.toLowerCase()
+//         (s) => (s.proofOfPayment || "").toLowerCase() === status.toLowerCase()
 //       );
 
 //     if (search.trim()) {
@@ -425,7 +425,7 @@ export default function SchoolRegistration() {
 //       email: "gracefieldcollege@gmail.com",
 //       state: "Abuja",
 //       coordinator: "Adenuga Bode T.",
-//       paymentStatus: "Unverified",
+//       proofOfPayment: "Unverified",
 //       event: "choral",
 //     },
 //     {
@@ -433,7 +433,7 @@ export default function SchoolRegistration() {
 //       email: "gracefieldcollege@gmail.com",
 //       state: "Abuja",
 //       coordinator: "Adenuga Bode T.",
-//       paymentStatus: "Verified",
+//       proofOfPayment: "Verified",
 //       event: "solo",
 //     },
 //     {
@@ -441,7 +441,7 @@ export default function SchoolRegistration() {
 //       email: "gracefieldcollege@gmail.com",
 //       state: "Abuja",
 //       coordinator: "Adenuga Bode T.",
-//       paymentStatus: "Verified",
+//       proofOfPayment: "Verified",
 //       event: "choral",
 //     },
 //     {
@@ -449,7 +449,7 @@ export default function SchoolRegistration() {
 //       email: "gracefieldcollege@gmail.com",
 //       state: "Abuja",
 //       coordinator: "Adenuga Bode T.",
-//       paymentStatus: "Verified",
+//       proofOfPayment: "Verified",
 //       event: "choral",
 //     },
 //     {
@@ -457,7 +457,7 @@ export default function SchoolRegistration() {
 //       email: "anothercollege@gmail.com",
 //       state: "Lagos",
 //       coordinator: "John Doe",
-//       paymentStatus: "Verified",
+//       proofOfPayment: "Verified",
 //       event: "solo",
 //     },
 //   ];
@@ -476,7 +476,7 @@ export default function SchoolRegistration() {
 //     // Filter by payment status (if selected)
 //     if (status) {
 //       filtered = filtered.filter(
-//         (school) => school.paymentStatus.toLowerCase() === status.toLowerCase()
+//         (school) => school.proofOfPayment.toLowerCase() === status.toLowerCase()
 //       );
 //     }
 

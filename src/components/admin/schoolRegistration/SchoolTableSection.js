@@ -33,7 +33,7 @@ export default function SchoolTableSection({
   const [selectedSchool, setSelectedSchool] = useState(null);
   const [paymentModal, setPaymentModal] = useState({ open: false, school: null });
   const [deleteModal, setDeleteModal] = useState({ open: false, school: null });
-  const [newPaymentStatus, setNewPaymentStatus] = useState("");
+  const [newproofOfPayment, setNewproofOfPayment] = useState("");
   const [editModal, setEditModal] = useState({ open: false, school: null, view: "menu", });
   const [eventStep, setEventStep] = useState(1);
   const [selectedEvent, setSelectedEvent] = useState("");
@@ -87,25 +87,24 @@ export default function SchoolTableSection({
                     <TableCell>{school.name || "---"}</TableCell>
                     <TableCell>{school.email || "---"}</TableCell>
                     <TableCell>{school.state || "---"}</TableCell>
-                    {/* <TableCell>{school.coordinator || "---"}</TableCell> */}
                     <TableCell>{school.choirCoordinator || "---"}</TableCell>
 
                     <TableCell>
                       <Typography
                         sx={{
                           color:
-                            school.paymentStatus === "Verified"
+                            school.proofOfPayment === "Verified"
                               ? "green"
                               : "error.main",
                           fontWeight: "bold",
                           cursor: "pointer",
                         }}
                         onClick={() => {
-                          setNewPaymentStatus(school.paymentStatus || "");
+                          setNewproofOfPayment(school.proofOfPayment || "");
                           setPaymentModal({ open: true, school });
                         }}
                       >
-                        {school.paymentStatus}
+                        {school.proofOfPayment}
                       </Typography>
                     </TableCell>
 
@@ -183,8 +182,8 @@ export default function SchoolTableSection({
             select
             SelectProps={{ native: true }}
             fullWidth
-            value={newPaymentStatus}
-            onChange={(e) => setNewPaymentStatus(e.target.value)}
+            value={newproofOfPayment}
+            onChange={(e) => setNewproofOfPayment(e.target.value)}
             sx={{
               mb: 3,
               backgroundColor: "#fff",
@@ -209,11 +208,11 @@ export default function SchoolTableSection({
             onClick={() => {
               onTogglePayment({
                 id: paymentModal.school.id,
-                payment_status: newPaymentStatus,
+                proofOfPayment: newproofOfPayment,
               });
 
               setPaymentModal({ open: false, school: null });
-              setNewPaymentStatus("");
+              setNewproofOfPayment("");
             }}
           >
             Save
@@ -294,7 +293,7 @@ export default function SchoolTableSection({
               <Typography><strong>Principal:</strong> {selectedSchool.principalName}</Typography>
               {/* <Typography><strong>Coordinator:</strong> {selectedSchool.coordination_name}</Typography> */}
               <Typography><strong>Coordinator:</strong> {selectedSchool.choirCoordinator}</Typography>
-              <Typography><strong>Payment Status:</strong> {selectedSchool.payment_status}</Typography>
+              <Typography><strong>Payment Status:</strong> {selectedSchool.proofOfPayment}</Typography>
               <Typography><strong>Created:</strong> {selectedSchool.created_at}</Typography>
             </Box>
           )}
@@ -369,8 +368,8 @@ export default function SchoolTableSection({
                 select
                 SelectProps={{ native: true }}
                 fullWidth
-                value={newPaymentStatus}
-                onChange={(e) => setNewPaymentStatus(e.target.value)}
+                value={newproofOfPayment}
+                onChange={(e) => setNewproofOfPayment(e.target.value)}
                 sx={{ mb: 3 }}
               >
                 <option value="">Select</option>
@@ -390,11 +389,11 @@ export default function SchoolTableSection({
                 onClick={() => {
                   onTogglePayment({
                     id: editModal.school.id,
-                    payment_status: newPaymentStatus,
+                    proofOfPayment: newproofOfPayment,
                   });
 
                   setEditModal({ open: false, school: null, view: "menu" });
-                  setNewPaymentStatus("");
+                  setNewproofOfPayment("");
                 }}
               >
                 Save
