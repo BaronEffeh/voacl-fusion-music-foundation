@@ -159,50 +159,6 @@ export default function EventStatsSection({ onAddEventClick }) {
     </Grid>
   ))}
 </Grid>
-
-      {/* <Grid container spacing={6} sx={{ mb: 4 }}>
-        {loading ? (
-          <Grid item xs={12}>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                py: 4,
-              }}
-            >
-              <CircularProgress color="error" />
-            </Box>
-          </Grid>
-        ) : (
-          eventStats.map((stat, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <Card
-                sx={{
-                  borderRadius: 3,
-                  boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
-                  bgcolor: "#fff5f5",
-                  border: "1px solid #FFB4AB",
-                }}
-              >
-                <CardContent sx={{ width: "245px", height: "144px" }}>
-                  <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
-                    {stat.icon}
-                    <Typography
-                      variant="h5"
-                      sx={{ ml: 2, fontWeight: "bold", color: "#333" }}
-                    >
-                      {stat.value}
-                    </Typography>
-                  </Box>
-                  <Typography variant="body2" sx={{ color: "#666" }}>
-                    {stat.label}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))
-        )}
-      </Grid> */}
     </Box>
   );
 }

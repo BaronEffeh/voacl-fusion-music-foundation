@@ -106,18 +106,6 @@ export default function EventManager() {
   }
 };
 
-  // const handleDelete = async (id) => {
-  //   if (!window.confirm("Are you sure you want to delete this event?")) return;
-  //   try {
-  //     await axios.delete(`${API_BASE_URL}/events/${id}`);
-  //     setEvents((prev) => prev.filter((ev) => ev.id !== id));
-  //     toast.success("Event deleted successfully");
-  //   } catch (error) {
-  //     console.error("Error deleting event:", error);
-  //     toast.error("Failed to delete event");
-  //   }
-  // };
-
   /** Handle edit */
   const handleEdit = (event) => {
     const eventDate = new Date(event.date);

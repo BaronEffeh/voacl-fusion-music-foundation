@@ -1,0 +1,11 @@
+PUT /registrations/events/{eventID}/schools/{schoolID}/generate-code
+
+you will first of all check:
+
+PATCH /registrations/events/{eventID}/schools/{schoolID}/verify
+
+
+
+Verify: PATCH /registrations/events/{eventID}/schools/{schoolID}/verify
+
+Generate: PUT /registrations/events/{eventID}/schools/{schoolID}/generate-code
